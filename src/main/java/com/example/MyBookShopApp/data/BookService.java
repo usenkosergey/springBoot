@@ -1,5 +1,6 @@
 package com.example.MyBookShopApp.data;
 
+import com.example.MyBookShopApp.dto.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
@@ -19,7 +20,12 @@ public class BookService {
     }
 
     public List<Book> getBooksData(){
-        List<Book> books = jdbcTemplate.query("SELECT * FROM books", (ResultSet rs, int rowNum) -> {
+        List<Book> books = jdbcTemplate.query(
+                "SELECT books.id, author.author, books.title, books.priceOld, books.price " +
+                        "FROM books " +
+                        "JOIN author " +
+                        "ON books.author = author.id",
+                (ResultSet rs, int rowNum) -> {
             Book book = new Book();
             book.setId(rs.getInt("id"));
             book.setAuthor(rs.getString("author"));
