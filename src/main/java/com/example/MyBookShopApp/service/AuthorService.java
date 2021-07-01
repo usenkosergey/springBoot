@@ -6,6 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 @Service
 public class AuthorService {
@@ -19,6 +21,12 @@ public class AuthorService {
 
     public List<Author> getAuthor() {
         return authorRepository.getAuthor();
+    }
+
+    public Map<String, List<Author>> getAlphabetAndAuthors() {
+        return authorRepository.getAuthor()
+                .stream()
+                .collect(Collectors.groupingBy((Author author) -> author.getAuthor().substring(0, 1)));
     }
 
 }
