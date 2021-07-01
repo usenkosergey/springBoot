@@ -1,24 +1,22 @@
-package com.example.MyBookShopApp.data;
+package com.example.MyBookShopApp.repository;
 
 import com.example.MyBookShopApp.dto.Author;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-@Service
-public class AuthorService {
-
+@Repository
+public class AuthorRepository {
     private JdbcTemplate jdbcTemplate;
 
     @Autowired
-    public AuthorService(JdbcTemplate jdbcTemplate) {
+    public AuthorRepository(JdbcTemplate jdbcTemplate) {
         this.jdbcTemplate = jdbcTemplate;
     }
-
     public List<Author> getAuthor() {
         List<Author> authors = jdbcTemplate.query("SELECT * FROM author ORDER BY author ASC", (ResultSet rs, int rowNum) -> {
             Author author = new Author();
