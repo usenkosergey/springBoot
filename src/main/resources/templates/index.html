@@ -54,7 +54,8 @@
     <div class="Header-rowMain">
       <div class="wrap">
         <div class="row">
-          <div class="row-block Header-logo"><a class="logo" href="/"><img class="logo-image" src="/assets/img/logo.png" alt="logo.png"/><span class="logo-text">BOOKSHOP</span></a>
+          <div class="row-block Header-logo"><a class="logo" href="/"><img class="logo-image" src="/assets/img/logo.png" alt="logo.png"/>
+            <span class="logo-text" th:text="'BOOKSHOP ' + ${#locale.getDisplayLanguage()}">BOOKSHOP</span></a>
           </div>
           <div class="Header-searchWrap row-block">
             <div class="Header-searchLink"><svg xmlns="http://www.w3.org/2000/svg" width="18" height="19" viewBox="0 0 18 19"><g><g><path fill="#b8b8b8" d="M17.812 17.852c.25.268.25.69 0 .948a.622.622 0 0 1-.457.2.64.64 0 0 1-.457-.2l-5.364-5.494a7.07 7.07 0 0 1-4.32 1.47C3.232 14.777 0 11.457 0 7.389 0 3.321 3.232 0 7.214 0c3.983 0 7.214 3.32 7.214 7.388 0 1.94-.74 3.7-1.926 5.015zM7.214 13.44c3.264 0 5.909-2.708 5.909-6.05 0-3.344-2.655-6.052-5.909-6.052-3.264 0-5.908 2.72-5.908 6.051 0 3.332 2.644 6.051 5.908 6.051z"/></g></g></svg>
@@ -63,7 +64,7 @@
               <div class="search">
                 <form class="form form_search" action="#" method="post" data-searchlimit="20">
                   <input class="search-input" id="query" name="query" type="text"
-                          th:placeholder="#{searchbar.placeholder}"
+                          th:placeholder="#{searchbar.placeholder(${serverTime},#{searchbar.placeholderTextPart1},${placeholderTextPart2})}"
                          placeholder="Search over 30 million book titles" value=""/>
                   <button class="search-button" type="submit" name="search" id="search">Поиск
                   </button>
@@ -128,106 +129,6 @@
                   </div>
                 </div>
               </div>
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/>-->
-<!--                      <div class="Card-sale">30% скидка-->
-<!--                      </div></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Английский язык. 5 класс. Английский в фокусе. Рабочая тетрадь. ФГОС</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Ваулина, Дули, Подоляко-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-priceOld">₽250.00</span><span class="Card-price">₽210.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Английский язык. 4 класс. Английский в фокусе. Рабочая тетрадь</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Быкова, Дули, Эванс-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽190.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Великая Отечественная война. 1941-1945</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Солопенко Алла, Меркулов Дмитрий-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽50.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Большое путешествие по телу человека</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Джон Фарндон-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽900.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Английский язык. 4 класс. Английский в фокусе. Рабочая тетрадь</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Быкова, Дули, Эванс-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽190.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Великая Отечественная война. 1941-1945</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Солопенко Алла, Меркулов Дмитрий-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽50.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
-<!--              <div class="Slider-item">-->
-<!--                <div class="Slider-content">-->
-<!--                  <div class="Card"><a class="Card-picture" href="/books/slug.html"><img src="/assets/img/content/main/card.jpg" alt="card.jpg"/></a>-->
-<!--                    <div class="Card-content">-->
-<!--                      <strong class="Card-title"><a href="/books/slug.html">Большое путешествие по телу человека</a>-->
-<!--                      </strong>-->
-<!--                      <div class="Card-description">Джон Фарндон-->
-<!--                      </div>-->
-<!--                      <div class="Card-cost"><span class="Card-price">₽900.00</span>-->
-<!--                      </div>-->
-<!--                    </div>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </div>-->
             </div>
             <div class="Slider-navigateWrap">
               <div class="Slider-navigate">
