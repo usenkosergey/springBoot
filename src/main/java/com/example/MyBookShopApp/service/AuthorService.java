@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.stream.Collectors;
 
@@ -26,7 +27,7 @@ public class AuthorService {
     public Map<String, List<Author>> getAlphabetAndAuthors() {
         return authorRepository.getAuthor()
                 .stream()
-                .collect(Collectors.groupingBy((Author author) -> author.getAuthor().substring(0, 1)));
+                .collect(Collectors.groupingBy((Author author) -> author.getLastName().substring(0, 1).toUpperCase(Locale.ROOT)));
     }
 
 }

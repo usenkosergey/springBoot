@@ -22,9 +22,10 @@ public class AuthorRepository {
     }
 
     public List<Author> getAuthor() {
-        List<Author> authors = jdbcTemplate.query("SELECT * FROM author ORDER BY author ASC", authorMapper);
+        List<Author> authors = jdbcTemplate.query("SELECT * FROM authors", authorMapper);
 
         return new ArrayList<>(authors);
+        //return null;
     }
 
 }

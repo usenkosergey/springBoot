@@ -9,10 +9,11 @@ CREATE TABLE books
     price    VARCHAR(250) DEFAULT NULL
 );
 
-DROP TABLE IF EXISTS author;
+DROP TABLE IF EXISTS authors;
 
-CREATE TABLE author
+create table authors
 (
-    id INT AUTO_INCREMENT PRIMARY KEY,
-    author   VARCHAR(250) NOT NULL
-)
+    id         INT,
+    first_name VARCHAR(50),
+    last_name  VARCHAR(50)
+);

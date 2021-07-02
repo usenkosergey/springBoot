@@ -22,11 +22,7 @@ public class BookRepository {
     }
 
     public List<Book> getBooksData() {
-        List<Book> books = jdbcTemplate.query(
-                "SELECT books.id, author.author, books.title, books.priceOld, books.price " +
-                        "FROM books " +
-                        "JOIN author " +
-                        "ON books.author = author.id", bookMapper);
+        List<Book> books = jdbcTemplate.query("SELECT * FROM books ", bookMapper);
         return new ArrayList<>(books);
     }
 }
