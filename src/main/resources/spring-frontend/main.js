@@ -1,8 +1,8 @@
 $(document).ready(function () {
     $("#locales").change(function () {
-        var selectedOprion = $('#locales').val();
-        if (selectedOprion != '') {
-            window.location.replace('?lang=' + selectedOprion);
+        let selectedOption = $('#locales').val();
+        if (selectedOption !== '') {
+            window.location.replace('?lang=' + selectedOption);
         }
     });
 });
