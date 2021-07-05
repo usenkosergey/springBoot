@@ -13,7 +13,7 @@ public class SearchController {
 
     @GetMapping(value = {"/", "/{searchValue}"})
     public String search(@PathVariable(required = false) String searchValue) {
-        logger.info("------> " + searchValue);
+        logger.info("------>  {}", searchValue);
         return "/search/index";
     }
 }

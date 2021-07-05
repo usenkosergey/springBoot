@@ -1,6 +1,6 @@
 package com.example.MyBookShopApp.repository.mapper;
 
-import com.example.MyBookShopApp.dto.Author;
+import com.example.MyBookShopApp.entity.Author;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Component;
 

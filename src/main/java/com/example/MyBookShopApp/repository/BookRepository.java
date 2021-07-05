@@ -1,6 +1,6 @@
 package com.example.MyBookShopApp.repository;
 
-import com.example.MyBookShopApp.dto.Book;
+import com.example.MyBookShopApp.entity.Book;
 import com.example.MyBookShopApp.repository.mapper.BookMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;

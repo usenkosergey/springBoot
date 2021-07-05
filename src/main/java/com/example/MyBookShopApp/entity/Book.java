@@ -1,10 +1,20 @@
-package com.example.MyBookShopApp.dto;
+package com.example.MyBookShopApp.entity;
 
+import javax.persistence.*;
+
+@Entity
+@Table(name = "books")
 public class Book {
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
+    @Transient
     private String author;
     private String title;
+
+    //@Column(name = "price_old")
     private String priceOld;
     private String price;
 

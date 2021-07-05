@@ -1,6 +1,6 @@
 package com.example.MyBookShopApp.repository;
 
-import com.example.MyBookShopApp.dto.Author;
+import com.example.MyBookShopApp.entity.Author;
 import com.example.MyBookShopApp.repository.mapper.AuthorMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -25,7 +25,12 @@ public class AuthorRepository {
         List<Author> authors = jdbcTemplate.query("SELECT * FROM authors", authorMapper);
 
         return new ArrayList<>(authors);
-        //return null;
+    }
+
+    public String getAuthorsById(int authorsId){
+        List<Author> authors = jdbcTemplate.query("SELECT * FROM authors WHERE authors.id = " + authorsId, authorMapper);
+
+        return authors.get(0).toString();
     }
 
 }
