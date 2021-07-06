@@ -21,13 +21,14 @@ public class AuthorService {
     }
 
     public List<Author> getAuthor() {
-        return authorRepository.getAuthor();
+        return authorRepository.findAll();
     }
 
     public Map<String, List<Author>> getAlphabetAndAuthors() {
-        return authorRepository.getAuthor()
+        return authorRepository.findAll()
                 .stream()
                 .collect(Collectors.groupingBy((Author author) -> author.getLastName().substring(0, 1).toUpperCase(Locale.ROOT)));
+
     }
 
 }

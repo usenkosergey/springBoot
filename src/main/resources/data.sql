@@ -20,7 +20,6 @@ insert into authors (id, first_name, last_name) values (19, 'Flynn', 'M''Quharge
 insert into authors (id, first_name, last_name) values (20, 'Krystyna', 'Rizzillo');
 insert into authors (id, first_name, last_name) values (21, 'Oliviero', 'Gorghetto');
 
-
 insert into books (id, price, price_old, title, author_id) values (1, 496, 93, 'Y-find', 4);
 insert into books (id, price, price_old, title, author_id) values (2, 408, 26, 'Treeflex', 12);
 insert into books (id, price, price_old, title, author_id) values (3, 827, 73, 'Stringtough', 21);

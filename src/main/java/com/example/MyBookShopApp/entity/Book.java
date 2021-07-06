@@ -10,11 +10,11 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Transient
-    private String author;
-    private String title;
+    @ManyToOne
+    @JoinColumn(name = "author_id", referencedColumnName = "id", foreignKey = @ForeignKey(name = "BOOK_ID_FK"))
+    private Author author;
 
-    //@Column(name = "price_old")
+    private String title;
     private String priceOld;
     private String price;
 
@@ -26,11 +26,11 @@ public class Book {
         this.id = id;
     }
 
-    public String getAuthor() {
+    public Author getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author) {
+    public void setAuthor(Author author) {
         this.author = author;
     }
 

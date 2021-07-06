@@ -1,6 +1,5 @@
 package com.example.MyBookShopApp.entity;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,20 +11,12 @@ public class Author {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String firstName;
     private String lastName;
 
-    @OneToMany
-    @JoinColumn(name = "author_id", referencedColumnName = "id")
+    @OneToMany(mappedBy = "author")
     private List<Book> bookList = new ArrayList<>();
-
-    public List<Book> getBookList() {
-        return bookList;
-    }
-
-    public void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
-    }
 
     public Integer getId() {
         return id;
@@ -49,6 +40,14 @@ public class Author {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public List<Book> getBookList() {
+        return bookList;
+    }
+
+    public void setBookList(List<Book> bookList) {
+        this.bookList = bookList;
     }
 
     @Override
