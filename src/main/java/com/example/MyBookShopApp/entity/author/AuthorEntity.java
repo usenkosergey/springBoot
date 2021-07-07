@@ -1,10 +1,10 @@
 package com.example.MyBookShopApp.entity.author;
 
-import com.example.MyBookShopApp.entity.book.BookEntity;
+import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "author")
@@ -25,6 +25,16 @@ public class AuthorEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
+    @OneToMany(mappedBy = "authorId")
+    private Set<Book2AuthorEntity> book2AuthorEntities = new HashSet<>();
+
+    public Set<Book2AuthorEntity> getBook2AuthorEntities() {
+        return book2AuthorEntities;
+    }
+
+    public void setBook2AuthorEntities(Set<Book2AuthorEntity> book2AuthorEntities) {
+        this.book2AuthorEntities = book2AuthorEntities;
+    }
 
     public Integer getId() {
         return id;
