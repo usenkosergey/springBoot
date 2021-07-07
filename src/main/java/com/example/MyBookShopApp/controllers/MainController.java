@@ -21,7 +21,8 @@ public class MainController {
 
     @ModelAttribute("recommendedBooks")
     public List<BookEntity> recommendedBooks(){
-        return bookService.getBooksData();
+        List<BookEntity> bookEntities = bookService.getBooksData();
+        return bookEntities;
     }
 
     @GetMapping("/")

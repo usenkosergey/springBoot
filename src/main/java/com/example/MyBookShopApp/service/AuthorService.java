@@ -25,10 +25,10 @@ public class AuthorService {
     }
 
     public Map<String, List<AuthorEntity>> getAlphabetAndAuthors() {
-//        return authorRepository.findAll()
-//                .stream()
-//                .collect(Collectors.groupingBy((AuthorEntity authorEntity) -> authorEntity.getLastName().substring(0, 1).toUpperCase(Locale.ROOT)));
-return null;
+        return authorRepository.findAll()
+                .stream()
+                .collect(Collectors.groupingBy((AuthorEntity authorEntity) -> authorEntity.getName().substring(0, 1).toUpperCase(Locale.ROOT)));
+
     }
 
 }
