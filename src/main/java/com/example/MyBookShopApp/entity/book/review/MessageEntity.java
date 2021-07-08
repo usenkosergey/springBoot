@@ -1,5 +1,7 @@
 package com.example.MyBookShopApp.entity.book.review;
 
+import com.example.MyBookShopApp.entity.user.UserEntity;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -14,20 +16,27 @@ public class MessageEntity {
     @Column(columnDefinition = "TIMESTAMP NOT NULL")
     private LocalDateTime time;
 
-    @Column(columnDefinition = "INT")
-    private int userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"), nullable = false)
+    private UserEntity user;
 
-    @Column(columnDefinition = "VARCHAR(255)")
     private String email;
 
-    @Column(columnDefinition = "VARCHAR(255)")
     private String name;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String subject;
 
     @Column(columnDefinition = "TEXT NOT NULL")
     private String text;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -43,14 +52,6 @@ public class MessageEntity {
 
     public void setTime(LocalDateTime time) {
         this.time = time;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public String getEmail() {
