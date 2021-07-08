@@ -1,6 +1,7 @@
 package com.example.MyBookShopApp.entity.book;
 
 import com.example.MyBookShopApp.entity.author.AuthorEntity;
+import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
@@ -65,6 +66,18 @@ public class BookEntity {
             inverseJoinColumns = @JoinColumn(name = "genreId", foreignKey = @ForeignKey(name = "GENRE_ID_FK")))
     private Set<GenreEntity> genres = new HashSet<>();
     //************************
+    @OneToMany(mappedBy = "user")
+    private Set<FileDownloadEntity> fileDownloadEntities = new HashSet<>();
+    //************************
+
+
+    public Set<FileDownloadEntity> getFileDownloadEntities() {
+        return fileDownloadEntities;
+    }
+
+    public void setFileDownloadEntities(Set<FileDownloadEntity> fileDownloadEntities) {
+        this.fileDownloadEntities = fileDownloadEntities;
+    }
 
     public Set<Book2UserEntity> getBook2UserEntities() {
         return book2UserEntities;
