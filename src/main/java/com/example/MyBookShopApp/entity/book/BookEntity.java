@@ -4,7 +4,9 @@ import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
+import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
+import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -66,10 +68,14 @@ public class BookEntity {
             inverseJoinColumns = @JoinColumn(name = "genreId", foreignKey = @ForeignKey(name = "GENRE_ID_FK")))
     private Set<GenreEntity> genres = new HashSet<>();
     //************************
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "book")
     private Set<FileDownloadEntity> fileDownloadEntities = new HashSet<>();
     //************************
-
+    @OneToMany(mappedBy = "book")
+    private Set<BalanceTransactionEntity> balanceTransactionEntities = new HashSet<>();
+    //************************
+    @OneToMany(mappedBy = "book")
+    private Set<BookReviewEntity> bookReviewEntities = new HashSet<>();
 
     public Set<FileDownloadEntity> getFileDownloadEntities() {
         return fileDownloadEntities;
