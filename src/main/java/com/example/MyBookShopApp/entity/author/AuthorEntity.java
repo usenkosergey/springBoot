@@ -1,6 +1,9 @@
 package com.example.MyBookShopApp.entity.author;
 
 import com.example.MyBookShopApp.entity.book.BookEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -8,10 +11,12 @@ import java.util.Set;
 
 @Entity
 @Table(name = "author")
+@ApiModel(description = "Это сущность - АВТОР")
 public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @ApiModelProperty("Это поле генериться автоматически базой данных")
     private Integer id;
 
     private String photo;
@@ -19,6 +24,7 @@ public class AuthorEntity {
     @Column(nullable = false)
     private String slug;
 
+    @ApiModelProperty(value = "Фамилия и Имя автора", example = "Иванов Иван")
     @Column(nullable = false)
     private String name;
 
@@ -26,6 +32,7 @@ public class AuthorEntity {
     private String description;
 
     @ManyToMany(mappedBy = "authors")
+    @JsonIgnore
     private Set<BookEntity> books = new HashSet<>();
 
     public Set<BookEntity> getBooks() {
