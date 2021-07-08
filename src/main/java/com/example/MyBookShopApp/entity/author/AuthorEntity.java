@@ -1,5 +1,6 @@
 package com.example.MyBookShopApp.entity.author;
 
+import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 
 import javax.persistence.*;
@@ -25,15 +26,15 @@ public class AuthorEntity {
     @Column(columnDefinition = "TEXT")
     private String description;
 
-    @OneToMany(mappedBy = "authorId")
-    private Set<Book2AuthorEntity> book2AuthorEntities = new HashSet<>();
+    @ManyToMany(mappedBy = "authors")
+    private Set<BookEntity> books = new HashSet<>();
 
-    public Set<Book2AuthorEntity> getBook2AuthorEntities() {
-        return book2AuthorEntities;
+    public Set<BookEntity> getBooks() {
+        return books;
     }
 
-    public void setBook2AuthorEntities(Set<Book2AuthorEntity> book2AuthorEntities) {
-        this.book2AuthorEntities = book2AuthorEntities;
+    public void setBooks(Set<BookEntity> books) {
+        this.books = books;
     }
 
     public Integer getId() {

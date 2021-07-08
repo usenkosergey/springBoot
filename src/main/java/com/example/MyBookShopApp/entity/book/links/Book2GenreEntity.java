@@ -10,9 +10,9 @@ public class Book2GenreEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "book_id", nullable = false)
+    @Column(nullable = false)
     private Integer bookId;
 
-    @Column(name = "genre_id", nullable = false)
+    @Column(nullable = false)
     private Integer genreId;
 }

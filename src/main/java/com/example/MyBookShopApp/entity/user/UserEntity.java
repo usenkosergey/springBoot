@@ -11,16 +11,16 @@ public class UserEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String hash;
 
     @Column(columnDefinition = "TIMESTAMP NOT NULL")
     private LocalDateTime regTime;
 
-    @Column(columnDefinition = "INT NOT NULL")
+    @Column(nullable = false)
     private int balance;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String name;
 
     public int getId() {

@@ -10,10 +10,10 @@ public class Book2UserTypeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String code;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String name;
 
     public int getId() {

@@ -1,6 +1,8 @@
 package com.example.MyBookShopApp.entity.book;
 
+import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
+import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 
 import javax.persistence.*;
@@ -39,18 +41,38 @@ public class BookEntity {
     @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
     private Short discount;
 
-    @OneToMany(mappedBy = "bookId")
-    private Set<Book2AuthorEntity> book2AuthorEntities = new HashSet<>();
-
+    //************************
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
             })
-    @JoinTable(name = "book2genre", joinColumns = @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_FK")),
-            inverseJoinColumns = @JoinColumn(name = "genre_id", foreignKey = @ForeignKey(name = "GENRE_ID_FK"))
-    )
+    @JoinTable(name = "book2author",
+            joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
+            inverseJoinColumns = @JoinColumn(name = "authorId", foreignKey = @ForeignKey(name = "AUTHOR_ID_FK")))
+    private Set<AuthorEntity> authors = new HashSet<>();
+    //************************
+    @OneToMany(mappedBy = "book")
+    private Set<Book2UserEntity> book2UserEntities = new HashSet<>();
+    //************************
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "book2genre",
+            joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_FK")),
+            inverseJoinColumns = @JoinColumn(name = "genreId", foreignKey = @ForeignKey(name = "GENRE_ID_FK")))
     private Set<GenreEntity> genres = new HashSet<>();
+    //************************
+
+    public Set<Book2UserEntity> getBook2UserEntities() {
+        return book2UserEntities;
+    }
+
+    public void setBook2UserEntities(Set<Book2UserEntity> book2UserEntities) {
+        this.book2UserEntities = book2UserEntities;
+    }
 
     public Set<GenreEntity> getGenres() {
         return genres;
@@ -60,12 +82,12 @@ public class BookEntity {
         this.genres = genres;
     }
 
-    public Set<Book2AuthorEntity> getBook2AuthorEntities() {
-        return book2AuthorEntities;
+    public Set<AuthorEntity> getAuthors() {
+        return authors;
     }
 
-    public void setBook2AuthorEntities(Set<Book2AuthorEntity> book2AuthorEntities) {
-        this.book2AuthorEntities = book2AuthorEntities;
+    public void setAuthors(Set<AuthorEntity> authors) {
+        this.authors = authors;
     }
 
     public Integer getId() {
