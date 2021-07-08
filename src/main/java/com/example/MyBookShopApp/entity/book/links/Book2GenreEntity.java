@@ -8,11 +8,11 @@ public class Book2GenreEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
+    private Integer id;
 
-    @Column(columnDefinition = "INT NOT NULL")
-    private int bookId;
+    @Column(name = "book_id", nullable = false)
+    private Integer bookId;
 
-    @Column(columnDefinition = "INT NOT NULL")
-    private int genreId;
+    @Column(name = "genre_id", nullable = false)
+    private Integer genreId;
 }

@@ -1,6 +1,7 @@
 package com.example.MyBookShopApp.entity.book;
 
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
+import com.example.MyBookShopApp.entity.genre.GenreEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -40,6 +41,24 @@ public class BookEntity {
 
     @OneToMany(mappedBy = "bookId")
     private Set<Book2AuthorEntity> book2AuthorEntities = new HashSet<>();
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinTable(name = "book2genre", joinColumns = @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_FK")),
+            inverseJoinColumns = @JoinColumn(name = "genre_id", foreignKey = @ForeignKey(name = "GENRE_ID_FK"))
+    )
+    private Set<GenreEntity> genres = new HashSet<>();
+
+    public Set<GenreEntity> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<GenreEntity> genres) {
+        this.genres = genres;
+    }
 
     public Set<Book2AuthorEntity> getBook2AuthorEntities() {
         return book2AuthorEntities;

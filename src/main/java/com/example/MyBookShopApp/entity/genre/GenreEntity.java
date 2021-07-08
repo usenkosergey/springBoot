@@ -1,6 +1,10 @@
 package com.example.MyBookShopApp.entity.genre;
 
+import com.example.MyBookShopApp.entity.book.BookEntity;
+
 import javax.persistence.*;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 @Table(name = "genre")
@@ -10,14 +14,29 @@ public class GenreEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "INT")
     private int parentId;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String slug;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String name;
+
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            },
+            mappedBy = "genres")
+    private Set<BookEntity> books = new HashSet<>();
+
+    public Set<BookEntity> getBooks() {
+        return books;
+    }
+
+    public void setBooks(Set<BookEntity> books) {
+        this.books = books;
+    }
 
     public int getId() {
         return id;
