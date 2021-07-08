@@ -40,7 +40,7 @@ public class BookEntity {
     @Column(nullable = false)
     private Integer price;
 
-    @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
+    @Column(columnDefinition = "SMALLINT NOT NULL DEFAULT 0")
     private Short discount;
 
     //************************
