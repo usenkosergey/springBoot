@@ -19,6 +19,14 @@ public class Book2AuthorEntity {
     @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
     private int sortIndex;
 
+    public void setBookId(Integer bookId) {
+        this.bookId = bookId;
+    }
+
+    public void setAuthorId(Integer authorId) {
+        this.authorId = authorId;
+    }
+
     public int getId() {
         return id;
     }

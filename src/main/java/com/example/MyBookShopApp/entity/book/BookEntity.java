@@ -2,7 +2,6 @@ package com.example.MyBookShopApp.entity.book;
 
 import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
-import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
@@ -56,7 +55,7 @@ public class BookEntity {
     private Set<AuthorEntity> authors = new HashSet<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<Book2UserEntity> book2UserEntities = new HashSet<>();
+    private Set<Book2UserEntity> user = new HashSet<>();
     //************************
     @ManyToMany(fetch = FetchType.EAGER,
             cascade = {
@@ -69,45 +68,15 @@ public class BookEntity {
     private Set<GenreEntity> genres = new HashSet<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<FileDownloadEntity> fileDownloadEntities = new HashSet<>();
+    private Set<FileDownloadEntity> fileDownload = new HashSet<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<BalanceTransactionEntity> balanceTransactionEntities = new HashSet<>();
+    private Set<BalanceTransactionEntity> balanceTransaction = new HashSet<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<BookReviewEntity> bookReviewEntities = new HashSet<>();
+    private Set<BookReviewEntity> bookReview = new HashSet<>();
+    //************************
 
-    public Set<FileDownloadEntity> getFileDownloadEntities() {
-        return fileDownloadEntities;
-    }
-
-    public void setFileDownloadEntities(Set<FileDownloadEntity> fileDownloadEntities) {
-        this.fileDownloadEntities = fileDownloadEntities;
-    }
-
-    public Set<Book2UserEntity> getBook2UserEntities() {
-        return book2UserEntities;
-    }
-
-    public void setBook2UserEntities(Set<Book2UserEntity> book2UserEntities) {
-        this.book2UserEntities = book2UserEntities;
-    }
-
-    public Set<GenreEntity> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(Set<GenreEntity> genres) {
-        this.genres = genres;
-    }
-
-    public Set<AuthorEntity> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Set<AuthorEntity> authors) {
-        this.authors = authors;
-    }
 
     public Integer getId() {
         return id;
@@ -179,5 +148,53 @@ public class BookEntity {
 
     public void setDiscount(Short discount) {
         this.discount = discount;
+    }
+
+    public Set<AuthorEntity> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(Set<AuthorEntity> authors) {
+        this.authors = authors;
+    }
+
+    public Set<Book2UserEntity> getUser() {
+        return user;
+    }
+
+    public void setUser(Set<Book2UserEntity> user) {
+        this.user = user;
+    }
+
+    public Set<GenreEntity> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(Set<GenreEntity> genres) {
+        this.genres = genres;
+    }
+
+    public Set<FileDownloadEntity> getFileDownload() {
+        return fileDownload;
+    }
+
+    public void setFileDownload(Set<FileDownloadEntity> fileDownload) {
+        this.fileDownload = fileDownload;
+    }
+
+    public Set<BalanceTransactionEntity> getBalanceTransaction() {
+        return balanceTransaction;
+    }
+
+    public void setBalanceTransaction(Set<BalanceTransactionEntity> balanceTransaction) {
+        this.balanceTransaction = balanceTransaction;
+    }
+
+    public Set<BookReviewEntity> getBookReview() {
+        return bookReview;
+    }
+
+    public void setBookReview(Set<BookReviewEntity> bookReview) {
+        this.bookReview = bookReview;
     }
 }

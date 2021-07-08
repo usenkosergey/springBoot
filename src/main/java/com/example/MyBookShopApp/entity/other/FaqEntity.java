@@ -13,7 +13,6 @@ public class FaqEntity {
     @Column(columnDefinition = "INT NOT NULL  DEFAULT 0")
     private int sortIndex;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
     private String question;
 
     @Column(columnDefinition = "TEXT NOT NULL")
