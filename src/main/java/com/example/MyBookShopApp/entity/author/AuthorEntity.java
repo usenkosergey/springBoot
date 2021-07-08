@@ -1,7 +1,6 @@
 package com.example.MyBookShopApp.entity.author;
 
 import com.example.MyBookShopApp.entity.book.BookEntity;
-import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 
 import javax.persistence.*;
 import java.util.HashSet;

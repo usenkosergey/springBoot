@@ -21,11 +21,11 @@ public class Book2UserEntity {
     private int typeId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_id")
+    @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_FK"))
     private BookEntity book;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id")
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"))
     private UserEntity user;
 
     public int getId() {
@@ -52,19 +52,19 @@ public class Book2UserEntity {
         this.typeId = typeId;
     }
 
-//    public int getBookId() {
-//        return bookId;
-//    }
-//
-//    public void setBookId(int bookId) {
-//        this.bookId = bookId;
-//    }
-//
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
+    public BookEntity getBook() {
+        return book;
+    }
+
+    public void setBook(BookEntity book) {
+        this.book = book;
+    }
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 }

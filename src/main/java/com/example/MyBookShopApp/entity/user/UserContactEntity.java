@@ -15,25 +15,33 @@ public class UserContactEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(columnDefinition = "INT NOT NULL")
-    private int userId;
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"))
+    private UserEntity user;
 
     private ContactType type;
 
     @Column(columnDefinition = "SMALLINT NOT NULL")
     private short approved;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String code;
 
-    @Column(columnDefinition = "INT")
     private int codeTrails;
 
     @Column(columnDefinition = "TIMESTAMP")
     private LocalDateTime codeTime;
 
-    @Column(columnDefinition = "VARCHAR(255) NOT NULL")
+    @Column(nullable = false)
     private String contact;
+
+    public UserEntity getUser() {
+        return user;
+    }
+
+    public void setUser(UserEntity user) {
+        this.user = user;
+    }
 
     public int getId() {
         return id;
@@ -41,14 +49,6 @@ public class UserContactEntity {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public int getUserId() {
-        return userId;
-    }
-
-    public void setUserId(int userId) {
-        this.userId = userId;
     }
 
     public ContactType getType() {
