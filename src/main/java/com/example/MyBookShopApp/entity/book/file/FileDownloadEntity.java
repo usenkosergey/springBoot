@@ -20,11 +20,6 @@ public class FileDownloadEntity {
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", nullable = false, foreignKey = @ForeignKey(name = "BOOK_ID_TO_FILE_FK"))
     private BookEntity book;
-//    @Column(columnDefinition = "INT NOT NULL")
-//    private int userId;
-//
-//    @Column(columnDefinition = "INT NOT NULL")
-//    private int bookId;
 
     @Column(columnDefinition = "INT NOT NULL DEFAULT 1")
     private int count;
@@ -52,22 +47,6 @@ public class FileDownloadEntity {
     public void setId(int id) {
         this.id = id;
     }
-
-//    public int getUserId() {
-//        return userId;
-//    }
-//
-//    public void setUserId(int userId) {
-//        this.userId = userId;
-//    }
-//
-//    public int getBookId() {
-//        return bookId;
-//    }
-//
-//    public void setBookId(int bookId) {
-//        this.bookId = bookId;
-//    }
 
     public int getCount() {
         return count;
