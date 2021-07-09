@@ -16,19 +16,22 @@ public class AuthorEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty("Это поле генериться автоматически базой данных")
+    @ApiModelProperty(value = "Это поле генериться автоматически базой данных", position = 1)
     private Integer id;
 
+    @ApiModelProperty(value = "Автарка автора, или заглушка", position = 2)
     private String photo;
 
     @Column(nullable = false)
+    @ApiModelProperty(position = 3)
     private String slug;
 
-    @ApiModelProperty(value = "Фамилия и Имя автора", example = "Иванов Иван")
+    @ApiModelProperty(value = "Фамилия и Имя автора", example = "Иванов Иван", position = 4)
     @Column(nullable = false)
     private String name;
 
     @Column(columnDefinition = "TEXT")
+    @ApiModelProperty(value = "Какое либо описание относящиеся к автору", position = 5)
     private String description;
 
     @ManyToMany(mappedBy = "authors")
