@@ -1,114 +1,213 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-1">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-1">
         <createSequence sequenceName="author_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-2">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-2">
         <createSequence sequenceName="author_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-3">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-3">
         <createSequence sequenceName="balance_transaction_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-4">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-4">
         <createSequence sequenceName="balance_transaction_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-5">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-5">
         <createSequence sequenceName="book2author_book_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-6">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-6">
         <createSequence sequenceName="book2author_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-7">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-7">
+        <createSequence sequenceName="book2author_id_seq1"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-8">
+        <createSequence sequenceName="book2author_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-9">
         <createSequence sequenceName="book2genre_book_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-8">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-10">
         <createSequence sequenceName="book2genre_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-9">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-11">
+        <createSequence sequenceName="book2genre_id_seq1"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-12">
+        <createSequence sequenceName="book2genre_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-13">
         <createSequence sequenceName="book2user_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-10">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-14">
         <createSequence sequenceName="book2user_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-11">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-15">
+        <createSequence sequenceName="book2user_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-16">
+        <createSequence sequenceName="book2user_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-17">
         <createSequence sequenceName="book2user_type_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-12">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-18">
         <createSequence sequenceName="book2user_type_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-13">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-19">
+        <createSequence sequenceName="book2user_type_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-20">
+        <createSequence sequenceName="book2user_type_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-21">
         <createSequence sequenceName="book_file_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-14">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-22">
         <createSequence sequenceName="book_file_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-15">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-23">
+        <createSequence sequenceName="book_file_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-24">
+        <createSequence sequenceName="book_file_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-25">
         <createSequence sequenceName="book_file_type_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-16">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-26">
         <createSequence sequenceName="book_file_type_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-17">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-27">
+        <createSequence sequenceName="book_file_type_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-28">
+        <createSequence sequenceName="book_file_type_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-29">
         <createSequence sequenceName="book_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-18">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-30">
         <createSequence sequenceName="book_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-19">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-31">
+        <createSequence sequenceName="book_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-32">
+        <createSequence sequenceName="book_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-33">
         <createSequence sequenceName="book_review_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-20">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-34">
         <createSequence sequenceName="book_review_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-21">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-35">
+        <createSequence sequenceName="book_review_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-36">
+        <createSequence sequenceName="book_review_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-37">
         <createSequence sequenceName="book_review_like_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-22">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-38">
         <createSequence sequenceName="book_review_like_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-23">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-39">
+        <createSequence sequenceName="book_review_like_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-40">
+        <createSequence sequenceName="book_review_like_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-41">
         <createSequence sequenceName="document_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-24">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-42">
         <createSequence sequenceName="document_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-25">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-43">
+        <createSequence sequenceName="document_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-44">
+        <createSequence sequenceName="document_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-45">
         <createSequence sequenceName="faq_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-26">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-46">
         <createSequence sequenceName="faq_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-27">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-47">
+        <createSequence sequenceName="faq_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-48">
+        <createSequence sequenceName="faq_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-49">
         <createSequence sequenceName="file_download_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-28">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-50">
         <createSequence sequenceName="file_download_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-29">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-51">
+        <createSequence sequenceName="file_download_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-52">
+        <createSequence sequenceName="file_download_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-53">
         <createSequence sequenceName="genre_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-30">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-54">
         <createSequence sequenceName="genre_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-31">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-55">
+        <createSequence sequenceName="genre_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-56">
+        <createSequence sequenceName="genre_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-57">
+        <createSequence sequenceName="hibernate_sequence"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-58">
         <createSequence sequenceName="message_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-32">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-59">
         <createSequence sequenceName="message_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-33">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-60">
+        <createSequence sequenceName="message_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-61">
+        <createSequence sequenceName="message_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-62">
         <createSequence sequenceName="user_contact_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-34">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-63">
         <createSequence sequenceName="user_contact_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-35">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-64">
+        <createSequence sequenceName="user_contact_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-65">
+        <createSequence sequenceName="user_contact_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-66">
         <createSequence sequenceName="users_id_seq"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-36">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-67">
         <createSequence sequenceName="users_id_seq1"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-37">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-68">
+        <createSequence sequenceName="users_id_seq2"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-69">
+        <createSequence sequenceName="users_id_seq3"/>
+    </changeSet>
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-70">
         <createTable tableName="author">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="author_pkey"/>
@@ -123,7 +222,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-38">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-71">
         <createTable tableName="balance_transaction">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="balance_transaction_pkey"/>
@@ -145,7 +244,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-39">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-72">
         <createTable tableName="book">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book_pkey"/>
@@ -172,36 +271,36 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-40">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-73">
         <createTable tableName="book2author">
-            <column name="id" type="INT">
-                <constraints nullable="false"/>
+            <column autoIncrement="true" name="id" type="SERIAL">
+                <constraints primaryKey="true" primaryKeyName="book2author_pkey"/>
             </column>
             <column name="author_id" type="INT">
                 <constraints nullable="false"/>
             </column>
-            <column autoIncrement="true" name="book_id" type="SERIAL">
-                <constraints primaryKey="true" primaryKeyName="book2author_pkey"/>
+            <column name="book_id" type="INT">
+                <constraints nullable="false"/>
             </column>
             <column defaultValueNumeric="0" name="sort_index" type="INT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-41">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-74">
         <createTable tableName="book2genre">
-            <column name="id" type="INT">
-                <constraints nullable="false"/>
-            </column>
-            <column autoIncrement="true" name="book_id" type="SERIAL">
+            <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book2genre_pkey"/>
+            </column>
+            <column name="book_id" type="INT">
+                <constraints nullable="false"/>
             </column>
             <column name="genre_id" type="INT">
                 <constraints nullable="false"/>
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-42">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-75">
         <createTable tableName="book2user">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book2user_pkey"/>
@@ -216,7 +315,7 @@
             <column name="user_id" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-43">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-76">
         <createTable tableName="book2user_type">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book2user_type_pkey"/>
@@ -229,7 +328,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-44">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-77">
         <createTable tableName="book_file">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book_file_pkey"/>
@@ -245,7 +344,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-45">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-78">
         <createTable tableName="book_file_type">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book_file_type_pkey"/>
@@ -256,7 +355,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-46">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-79">
         <createTable tableName="book_review">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book_review_pkey"/>
@@ -275,7 +374,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-47">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-80">
         <createTable tableName="book_review_like">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="book_review_like_pkey"/>
@@ -294,7 +393,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-48">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-81">
         <createTable tableName="document">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="document_pkey"/>
@@ -309,7 +408,7 @@
             <column name="title" type="VARCHAR(255)"/>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-49">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-82">
         <createTable tableName="faq">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="faq_pkey"/>
@@ -323,7 +422,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-50">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-83">
         <createTable tableName="file_download">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="file_download_pkey"/>
@@ -339,7 +438,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-51">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-84">
         <createTable tableName="genre">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="genre_pkey"/>
@@ -355,7 +454,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-52">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-85">
         <createTable tableName="message">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="message_pkey"/>
@@ -376,7 +475,7 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-53">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-86">
         <createTable tableName="user_contact">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="user_contact_pkey"/>
@@ -398,7 +497,7 @@
             <column name="user_id" type="INT"/>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-54">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-87">
         <createTable tableName="users">
             <column autoIncrement="true" name="id" type="SERIAL">
                 <constraints primaryKey="true" primaryKeyName="users_pkey"/>
@@ -417,25 +516,25 @@
             </column>
         </createTable>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-55">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-88">
         <addForeignKeyConstraint baseColumnNames="author_id" baseTableName="book2author" constraintName="author_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="author"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-56">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-89">
         <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book2genre" constraintName="book_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-57">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-90">
         <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="book2author" constraintName="book_id_to_author_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-58">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-91">
         <addForeignKeyConstraint baseColumnNames="book_id" baseTableName="file_download" constraintName="book_id_to_file_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="book"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-59">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-92">
         <addForeignKeyConstraint baseColumnNames="genre_id" baseTableName="book2genre" constraintName="genre_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="genre"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-60">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-93">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="book2user" constraintName="user_id_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>
     </changeSet>
-    <changeSet author="Sergey_USB (generated)" id="1625736848914-61">
+    <changeSet author="Sergey_USB (generated)" id="1625987275214-94">
         <addForeignKeyConstraint baseColumnNames="user_id" baseTableName="file_download" constraintName="user_id_to_file_fk" deferrable="false" initiallyDeferred="false" onDelete="NO ACTION" onUpdate="NO ACTION" referencedColumnNames="id" referencedTableName="users"/>
     </changeSet>
 </databaseChangeLog>
