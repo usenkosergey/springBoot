@@ -3,8 +3,8 @@ package com.example.MyBookShopApp.entity.author;
 import com.example.MyBookShopApp.entity.book.BookEntity;
 
 import javax.persistence.*;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(name = "author")
@@ -26,13 +26,14 @@ public class AuthorEntity {
     private String description;
 
     @ManyToMany(mappedBy = "authors")
-    private Set<BookEntity> books = new HashSet<>();
+    private List<BookEntity> books = new ArrayList<>();
 
-    public Set<BookEntity> getBooks() {
+
+    public List<BookEntity> getBooks() {
         return books;
     }
 
-    public void setBooks(Set<BookEntity> books) {
+    public void setBooks(List<BookEntity> books) {
         this.books = books;
     }
 

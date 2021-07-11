@@ -10,10 +10,10 @@ public class Book2AuthorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Integer bookId;
 
-    @JoinColumn(nullable = false)
+    @Column(nullable = false)
     private Integer authorId;
 
     @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
