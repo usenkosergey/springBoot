@@ -29,16 +29,16 @@ public class AuthorController {
     }
 
 
-//    @GetMapping("/authors")
-//    public String authorsPage() {
-//        return "/authors/index";
-//    }
-
-    @ApiOperation("метод возвращает всех авторов и первые буквы их ФИО")
     @GetMapping("/authors")
-    public Map<String, List<AuthorEntity>> authorsPage() {
-        return authorService.getAlphabetAndAuthors();
+    public String authorsPage() {
+        return "/authors/index";
     }
+
+//    @ApiOperation("метод возвращает всех авторов и первые буквы их ФИО")
+//    @GetMapping("/authors")
+//    public Map<String, List<AuthorEntity>> authorsPage() {
+//        return authorService.getAlphabetAndAuthors();
+//    }
 
 
 }
