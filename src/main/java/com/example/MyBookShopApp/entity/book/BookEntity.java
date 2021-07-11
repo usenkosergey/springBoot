@@ -8,9 +8,7 @@ import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 @Entity
 @Table(name = "book")
@@ -44,39 +42,85 @@ public class BookEntity {
     private Short discount;
 
     //************************
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(name = "book2author",
             joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
             inverseJoinColumns = @JoinColumn(name = "authorId", foreignKey = @ForeignKey(name = "AUTHOR_ID_FK")))
-    private Set<AuthorEntity> authors = new HashSet<>();
+    private List<AuthorEntity> authors = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<Book2UserEntity> user = new HashSet<>();
+    private List<Book2UserEntity> user = new ArrayList<>();
     //************************
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-                    CascadeType.PERSIST,
-                    CascadeType.MERGE
-            })
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
     @JoinTable(name = "book2genre",
             joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_FK")),
             inverseJoinColumns = @JoinColumn(name = "genreId", foreignKey = @ForeignKey(name = "GENRE_ID_FK")))
-    private Set<GenreEntity> genres = new HashSet<>();
+    private List<GenreEntity> genres = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<FileDownloadEntity> fileDownload = new HashSet<>();
+    private List<FileDownloadEntity> fileDownload = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<BalanceTransactionEntity> balanceTransaction = new HashSet<>();
+    private List<BalanceTransactionEntity> balanceTransaction = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
-    private Set<BookReviewEntity> bookReview = new HashSet<>();
+    private List<BookReviewEntity> bookReview = new ArrayList<>();
     //************************
 
+
+    public List<AuthorEntity> getAuthors() {
+        return authors;
+    }
+
+    public void setAuthors(List<AuthorEntity> authors) {
+        this.authors = authors;
+    }
+
+    public List<Book2UserEntity> getUser() {
+        return user;
+    }
+
+    public void setUser(List<Book2UserEntity> user) {
+        this.user = user;
+    }
+
+    public List<GenreEntity> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<GenreEntity> genres) {
+        this.genres = genres;
+    }
+
+    public List<FileDownloadEntity> getFileDownload() {
+        return fileDownload;
+    }
+
+    public void setFileDownload(List<FileDownloadEntity> fileDownload) {
+        this.fileDownload = fileDownload;
+    }
+
+    public List<BalanceTransactionEntity> getBalanceTransaction() {
+        return balanceTransaction;
+    }
+
+    public void setBalanceTransaction(List<BalanceTransactionEntity> balanceTransaction) {
+        this.balanceTransaction = balanceTransaction;
+    }
+
+    public List<BookReviewEntity> getBookReview() {
+        return bookReview;
+    }
+
+    public void setBookReview(List<BookReviewEntity> bookReview) {
+        this.bookReview = bookReview;
+    }
 
     public Integer getId() {
         return id;
@@ -148,53 +192,5 @@ public class BookEntity {
 
     public void setDiscount(Short discount) {
         this.discount = discount;
-    }
-
-    public Set<AuthorEntity> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(Set<AuthorEntity> authors) {
-        this.authors = authors;
-    }
-
-    public Set<Book2UserEntity> getUser() {
-        return user;
-    }
-
-    public void setUser(Set<Book2UserEntity> user) {
-        this.user = user;
-    }
-
-    public Set<GenreEntity> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(Set<GenreEntity> genres) {
-        this.genres = genres;
-    }
-
-    public Set<FileDownloadEntity> getFileDownload() {
-        return fileDownload;
-    }
-
-    public void setFileDownload(Set<FileDownloadEntity> fileDownload) {
-        this.fileDownload = fileDownload;
-    }
-
-    public Set<BalanceTransactionEntity> getBalanceTransaction() {
-        return balanceTransaction;
-    }
-
-    public void setBalanceTransaction(Set<BalanceTransactionEntity> balanceTransaction) {
-        this.balanceTransaction = balanceTransaction;
-    }
-
-    public Set<BookReviewEntity> getBookReview() {
-        return bookReview;
-    }
-
-    public void setBookReview(Set<BookReviewEntity> bookReview) {
-        this.bookReview = bookReview;
     }
 }
