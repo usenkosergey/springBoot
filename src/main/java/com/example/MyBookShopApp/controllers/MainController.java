@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import java.util.logging.Logger;
 
 import java.util.List;
 
@@ -20,6 +21,7 @@ import java.util.List;
 @Controller
 public class MainController {
 
+    private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
     private final BookService bookService;
 
     private BookRepository bookRepository;
@@ -34,11 +36,13 @@ public class MainController {
 
     @ModelAttribute("recommendedBooks")
     public List<BookEntity> recommendedBooks() {
-        return bookService.getPageOfRecommendedBooks(0, 6).getContent();
+        List<BookEntity> test = bookService.getPageOfRecommendedBooks(0, 6).getContent();
+        return test;
     }
 
     @GetMapping("/")
     public String mainPage() {
+        logger.info("------");
         return "index";
     }
 
@@ -51,9 +55,9 @@ public class MainController {
 
     @GetMapping("/books/dto")
     public BookDTO getTest() {
-        BookDTO bookDTO = mapper.bookEntityToBookDTO(bookRepository.findById(458).get());
-        System.out.println(bookDTO.toString());
-        System.out.println("-----");
+//        BookDTO bookDTO = mapper.bookEntityToBookDTO(bookRepository.findById(458).get());
+//        System.out.println(bookDTO.toString());
+//        System.out.println("-----");
         return null;
 
     }

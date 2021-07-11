@@ -6,6 +6,7 @@ import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.*;
@@ -42,13 +43,15 @@ public class BookEntity {
     private Short discount;
 
     //************************
-    @ManyToMany(cascade = {
+    @ManyToMany(fetch = FetchType.EAGER,
+            cascade = {
             CascadeType.PERSIST,
             CascadeType.MERGE
     })
     @JoinTable(name = "book2author",
             joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
             inverseJoinColumns = @JoinColumn(name = "authorId", foreignKey = @ForeignKey(name = "AUTHOR_ID_FK")))
+    //@JsonIgnore
     private List<AuthorEntity> authors = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
@@ -192,5 +195,23 @@ public class BookEntity {
 
     public void setDiscount(Short discount) {
         this.discount = discount;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        BookEntity bookEntity = (BookEntity) o;
+        return Objects.equals(id, bookEntity.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }

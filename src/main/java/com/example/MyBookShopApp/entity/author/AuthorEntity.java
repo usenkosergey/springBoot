@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "author")
@@ -34,7 +35,7 @@ public class AuthorEntity {
     @ApiModelProperty(value = "Какое либо описание относящиеся к автору", position = 5)
     private String description;
 
-    @ManyToMany(mappedBy = "authors")
+    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
     private List<BookEntity> books = new ArrayList<>();
 
 
@@ -89,5 +90,23 @@ public class AuthorEntity {
     @Override
     public String toString() {
         return name;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        AuthorEntity authorEntity = (AuthorEntity) o;
+        return Objects.equals(id, authorEntity.getId());
+
+    }
+
+    @Override
+    public int hashCode() {
+        return id.hashCode();
     }
 }
