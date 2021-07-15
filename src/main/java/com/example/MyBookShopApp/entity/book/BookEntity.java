@@ -44,17 +44,6 @@ public class BookEntity {
     private Short discount;
 
     //************************
-    @ManyToMany(fetch = FetchType.EAGER,
-            cascade = {
-            CascadeType.PERSIST,
-            CascadeType.MERGE
-    })
-    @JoinTable(name = "book2author",
-            joinColumns = @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
-            inverseJoinColumns = @JoinColumn(name = "authorId", foreignKey = @ForeignKey(name = "AUTHOR_ID_FK")))
-    //@JsonIgnore
-    private List<AuthorEntity> authors = new ArrayList<>();
-    //************************
     @OneToMany(mappedBy = "book")
     private List<Book2UserEntity> user = new ArrayList<>();
     //************************
@@ -87,14 +76,6 @@ public class BookEntity {
 
     public void setBook2author(List<Book2AuthorEntity> book2author) {
         this.book2author = book2author;
-    }
-
-    public List<AuthorEntity> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<AuthorEntity> authors) {
-        this.authors = authors;
     }
 
     public List<Book2UserEntity> getUser() {

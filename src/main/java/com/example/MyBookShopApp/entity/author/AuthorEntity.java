@@ -1,12 +1,10 @@
 package com.example.MyBookShopApp.entity.author;
 
-import com.example.MyBookShopApp.entity.book.BookEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.*;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -35,16 +33,15 @@ public class AuthorEntity {
     @ApiModelProperty(value = "Какое либо описание относящиеся к автору", position = 5)
     private String description;
 
-    @ManyToMany(mappedBy = "authors", fetch = FetchType.EAGER)
-    private List<BookEntity> books = new ArrayList<>();
+    @OneToMany(mappedBy = "author", fetch=FetchType.EAGER)
+    private List<Book2AuthorEntity> author2book;
 
-
-    public List<BookEntity> getBooks() {
-        return books;
+    public List<Book2AuthorEntity> getAuthor2book() {
+        return author2book;
     }
 
-    public void setBooks(List<BookEntity> books) {
-        this.books = books;
+    public void setAuthor2book(List<Book2AuthorEntity> author2book) {
+        this.author2book = author2book;
     }
 
     public Integer getId() {
