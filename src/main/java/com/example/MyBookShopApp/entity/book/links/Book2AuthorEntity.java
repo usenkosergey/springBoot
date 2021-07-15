@@ -1,5 +1,7 @@
 package com.example.MyBookShopApp.entity.book.links;
 
+import com.example.MyBookShopApp.entity.book.BookEntity;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,7 +12,7 @@ public class Book2AuthorEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(nullable = false)
+    @Column(name = "book_id", nullable = false)
     private Integer bookId;
 
     @Column(nullable = false)
@@ -18,6 +20,18 @@ public class Book2AuthorEntity {
 
     @Column(columnDefinition = "INT NOT NULL DEFAULT 0")
     private int sortIndex;
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "book_id", updatable = false, insertable = false)
+    private BookEntity book;
+
+    public BookEntity getBook() {
+        return book;
+    }
+
+    public void setBook(BookEntity book) {
+        this.book = book;
+    }
 
     public void setBookId(Integer bookId) {
         this.bookId = bookId;

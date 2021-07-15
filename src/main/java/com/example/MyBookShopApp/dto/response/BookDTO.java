@@ -4,7 +4,7 @@ public class BookDTO {
     private Integer id;
     private String slug;
     private String image;
-    private String authors; //“Сергей Дмитриев и другие”
+    private String author; //“Сергей Дмитриев и другие”
     private String title;
     private Short discount;
     private Boolean isBestseller;
@@ -14,6 +14,14 @@ public class BookDTO {
     private Integer discountPrice;
 
     public BookDTO() {
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
     public Integer getId() {
@@ -38,14 +46,6 @@ public class BookDTO {
 
     public void setImage(String image) {
         this.image = image;
-    }
-
-    public String getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(String authors) {
-        this.authors = authors;
     }
 
     public String getTitle() {
@@ -110,7 +110,7 @@ public class BookDTO {
                 "id=" + id +
                 ", slug='" + slug + '\'' +
                 ", image='" + image + '\'' +
-                ", authors='" + authors + '\'' +
+                ", authors='" + author + '\'' +
                 ", title='" + title + '\'' +
                 ", discount=" + discount +
                 ", isBestseller=" + isBestseller +

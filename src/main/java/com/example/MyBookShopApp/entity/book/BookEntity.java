@@ -2,6 +2,7 @@ package com.example.MyBookShopApp.entity.book;
 
 import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
+import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
@@ -49,7 +50,7 @@ public class BookEntity {
             CascadeType.MERGE
     })
     @JoinTable(name = "book2author",
-            joinColumns = @JoinColumn(name = "bookId", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
+            joinColumns = @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_TO_AUTHOR_FK")),
             inverseJoinColumns = @JoinColumn(name = "authorId", foreignKey = @ForeignKey(name = "AUTHOR_ID_FK")))
     //@JsonIgnore
     private List<AuthorEntity> authors = new ArrayList<>();
@@ -75,7 +76,18 @@ public class BookEntity {
     @OneToMany(mappedBy = "book")
     private List<BookReviewEntity> bookReview = new ArrayList<>();
     //************************
+    @OneToMany (mappedBy="book", fetch=FetchType.EAGER)
+    private List<Book2AuthorEntity> book2author;
+    //************************
 
+
+    public List<Book2AuthorEntity> getBook2author() {
+        return book2author;
+    }
+
+    public void setBook2author(List<Book2AuthorEntity> book2author) {
+        this.book2author = book2author;
+    }
 
     public List<AuthorEntity> getAuthors() {
         return authors;
