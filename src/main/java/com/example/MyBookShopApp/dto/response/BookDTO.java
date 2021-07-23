@@ -7,7 +7,7 @@ public class BookDTO {
     private String author; //“Сергей Дмитриев и другие”
     private String title;
     private Short discount;
-    private Boolean isBestseller;
+    private Byte isBestseller;
     private Short rating;
     private String status; //KEPT (отложена), CART (в корзине) и PAID(куплена)
     private Integer price;
@@ -16,12 +16,12 @@ public class BookDTO {
     public BookDTO() {
     }
 
-    public String getAuthor() {
-        return author;
+    public Byte getIsBestseller() {
+        return isBestseller;
     }
 
-    public void setAuthor(String author) {
-        this.author = author;
+    public void setIsBestseller(Byte isBestseller) {
+        this.isBestseller = isBestseller;
     }
 
     public Integer getId() {
@@ -48,6 +48,14 @@ public class BookDTO {
         this.image = image;
     }
 
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
+
     public String getTitle() {
         return title;
     }
@@ -62,14 +70,6 @@ public class BookDTO {
 
     public void setDiscount(Short discount) {
         this.discount = discount;
-    }
-
-    public Boolean getBestseller() {
-        return isBestseller;
-    }
-
-    public void setBestseller(Boolean bestseller) {
-        isBestseller = bestseller;
     }
 
     public Short getRating() {
@@ -102,23 +102,6 @@ public class BookDTO {
 
     public void setDiscountPrice(Integer discountPrice) {
         this.discountPrice = discountPrice;
-    }
-
-    @Override
-    public String toString() {
-        return "\nBookDTO -> {" +
-                "id=" + id +
-                ", slug='" + slug + '\'' +
-                ", image='" + image + '\'' +
-                ", authors='" + author + '\'' +
-                ", title='" + title + '\'' +
-                ", discount=" + discount +
-                ", isBestseller=" + isBestseller +
-                ", rating=" + rating +
-                ", status='" + status + '\'' +
-                ", price=" + price +
-                ", discountPrice=" + discountPrice +
-                '}';
     }
 
 }

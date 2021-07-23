@@ -1,13 +1,11 @@
 package com.example.MyBookShopApp.entity.book;
 
-import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import java.util.*;
@@ -24,7 +22,7 @@ public class BookEntity {
     private Date pubDate;
 
     @Column(name = "is_bestseller", nullable = false)
-    private Boolean isBestseller;
+    private Byte isBestseller;
 
     @Column(nullable = false)
     private String slug;
@@ -70,54 +68,6 @@ public class BookEntity {
     //************************
 
 
-    public List<Book2AuthorEntity> getBook2author() {
-        return book2author;
-    }
-
-    public void setBook2author(List<Book2AuthorEntity> book2author) {
-        this.book2author = book2author;
-    }
-
-    public List<Book2UserEntity> getUser() {
-        return user;
-    }
-
-    public void setUser(List<Book2UserEntity> user) {
-        this.user = user;
-    }
-
-    public List<GenreEntity> getGenres() {
-        return genres;
-    }
-
-    public void setGenres(List<GenreEntity> genres) {
-        this.genres = genres;
-    }
-
-    public List<FileDownloadEntity> getFileDownload() {
-        return fileDownload;
-    }
-
-    public void setFileDownload(List<FileDownloadEntity> fileDownload) {
-        this.fileDownload = fileDownload;
-    }
-
-    public List<BalanceTransactionEntity> getBalanceTransaction() {
-        return balanceTransaction;
-    }
-
-    public void setBalanceTransaction(List<BalanceTransactionEntity> balanceTransaction) {
-        this.balanceTransaction = balanceTransaction;
-    }
-
-    public List<BookReviewEntity> getBookReview() {
-        return bookReview;
-    }
-
-    public void setBookReview(List<BookReviewEntity> bookReview) {
-        this.bookReview = bookReview;
-    }
-
     public Integer getId() {
         return id;
     }
@@ -134,12 +84,12 @@ public class BookEntity {
         this.pubDate = pubDate;
     }
 
-    public Boolean getBestseller() {
+    public Byte getIsBestseller() {
         return isBestseller;
     }
 
-    public void setBestseller(Boolean bestseller) {
-        isBestseller = bestseller;
+    public void setIsBestseller(Byte isBestseller) {
+        this.isBestseller = isBestseller;
     }
 
     public String getSlug() {
@@ -188,6 +138,54 @@ public class BookEntity {
 
     public void setDiscount(Short discount) {
         this.discount = discount;
+    }
+
+    public List<Book2UserEntity> getUser() {
+        return user;
+    }
+
+    public void setUser(List<Book2UserEntity> user) {
+        this.user = user;
+    }
+
+    public List<GenreEntity> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<GenreEntity> genres) {
+        this.genres = genres;
+    }
+
+    public List<FileDownloadEntity> getFileDownload() {
+        return fileDownload;
+    }
+
+    public void setFileDownload(List<FileDownloadEntity> fileDownload) {
+        this.fileDownload = fileDownload;
+    }
+
+    public List<BalanceTransactionEntity> getBalanceTransaction() {
+        return balanceTransaction;
+    }
+
+    public void setBalanceTransaction(List<BalanceTransactionEntity> balanceTransaction) {
+        this.balanceTransaction = balanceTransaction;
+    }
+
+    public List<BookReviewEntity> getBookReview() {
+        return bookReview;
+    }
+
+    public void setBookReview(List<BookReviewEntity> bookReview) {
+        this.bookReview = bookReview;
+    }
+
+    public List<Book2AuthorEntity> getBook2author() {
+        return book2author;
+    }
+
+    public void setBook2author(List<Book2AuthorEntity> book2author) {
+        this.book2author = book2author;
     }
 
     @Override
