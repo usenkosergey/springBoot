@@ -29,4 +29,10 @@ public class BookService {
         return bookRepository.findAll(nextPage);
     }
 
+    public Page<BookEntity> getPageOfRecentBooks(Integer offset, Integer limit) {
+        Pageable nextPage = PageRequest.of(offset, limit);
+        return bookRepository.findAllByOrderByPubDateDesc(nextPage);
+    }
+
+
 }

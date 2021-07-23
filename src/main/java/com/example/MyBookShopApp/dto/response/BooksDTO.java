@@ -1,17 +1,13 @@
 package com.example.MyBookShopApp.dto.response;
 
-import com.example.MyBookShopApp.entity.book.BookEntity;
-
 import java.util.List;
 
 public class BooksDTO {
 
     private Integer count;
-    private List<BookEntity> books;
+    private List<BookDTO> books;
 
-    public BooksDTO(List<BookEntity> books) {
-        this.books = books;
-        this.count = books.size();
+    public BooksDTO() {
     }
 
     public Integer getCount() {
@@ -22,11 +18,11 @@ public class BooksDTO {
         this.count = count;
     }
 
-    public List<BookEntity> getBooks() {
+    public List<BookDTO> getBooks() {
         return books;
     }
 
-    public void setBooks(List<BookEntity> books) {
+    public void setBooks(List<BookDTO> books) {
         this.books = books;
     }
 }

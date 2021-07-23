@@ -14,7 +14,6 @@ import java.util.List;
 public abstract class BookMapper {
 
 
-
     @BeforeMapping
     void getAuthor(BookEntity bookEntity, @MappingTarget BookDTO bookDTO) {
         if (bookEntity.getBook2author().size() == 1) {
@@ -25,7 +24,10 @@ public abstract class BookMapper {
             book2AuthorEntities.sort(comparator);
             bookDTO.setAuthor(book2AuthorEntities.get(0).getAuthor() + " и другие.");
         }
+
+        bookDTO.setDiscountPrice(bookEntity.getPrice() - (bookEntity.getPrice() * bookEntity.getDiscount() / 100));
+
     }
 
-    public abstract BookDTO bookEntityToBookDTO(BookEntity bookEntity);
+    public abstract List<BookDTO> bookEntityToBookDTO(List<BookEntity> bookEntity);
 }
