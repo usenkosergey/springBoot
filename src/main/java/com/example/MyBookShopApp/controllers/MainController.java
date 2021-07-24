@@ -21,7 +21,7 @@ import java.util.List;
 @Controller
 public class MainController {
     /*     Magic number       */
-    private final int LIMIT_BOOKS = 6;
+    private final int LIMIT_BOOKS_INDEX_PAGE = 6;
 
     private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
     private final BookService bookService;
@@ -35,19 +35,19 @@ public class MainController {
 
     @ModelAttribute("recommendedBooks")
     public List<BookDTO> recommendedBooks() {
-        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(0, LIMIT_BOOKS).getContent();
+        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
         return mapper.bookEntityToBookDTO(bookEntityList);
     }
 
     @ModelAttribute("recentBooks")
     public List<BookDTO> recentBooks() {
-        List<BookEntity> bookEntityList = bookService.getPageOfRecentBooks(0, LIMIT_BOOKS).getContent();
+        List<BookEntity> bookEntityList = bookService.getPageOfRecentBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
         return mapper.bookEntityToBookDTO(bookEntityList);
     }
 
     @ModelAttribute("popularBooks")
     public List<BookDTO> popularBooks() {
-        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(0, LIMIT_BOOKS).getContent();
+        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
         return mapper.bookEntityToBookDTO(bookEntityList);
     }
 

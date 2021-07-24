@@ -16,47 +16,58 @@ import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
 @SpringBootTest
 class MyBookShopAppApplicationTests {
-	@Autowired
-	BookRepository bookRepository;
+    @Autowired
+    BookRepository bookRepository;
 
-	@Autowired
-	AuthorRepository authorRepository;
+    @Autowired
+    AuthorRepository authorRepository;
 
-	@Autowired
-	BookService bookService;
+    @Autowired
+    BookService bookService;
 
-	@Autowired
-	AuthorService authorService;
+    @Autowired
+    AuthorService authorService;
 
-	@Autowired
-	Book2AuthorRepository book2AuthorRepository;
+    @Autowired
+    Book2AuthorRepository book2AuthorRepository;
 
 //	@Autowired
 //	BookMapper bookMapper;
 
-	private BookMapper mapper = Mappers.getMapper(BookMapper.class);
+    private BookMapper mapper = Mappers.getMapper(BookMapper.class);
 
-	@Test
-	void contextLoads() {
-		//BooksDTO test1 = new BooksDTO(bookService.getPageOfRecommendedBooks(0, 6).getContent());
-		//System.out.println("1=======");
+    @Test
+    void contextLoads() {
 
-		//BooksDTO test3 = new BooksDTO(bookService.getPageOfRecommendedBooks(1, 6).getContent());
-		//System.out.println("2=======");
-
-//		AuthorsDTO test4 = new AuthorsDTO(authorService.getPageAuthor(0,6).getContent());
-//		System.out.println("3=======");
+//java.util.Date (n/a)
+//        Date eee = new Date();
+        SimpleDateFormat ft = new SimpleDateFormat("yyyy.MM.dd");
+//        try {
+//            eee = ft.parse("2017.01.01");
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
 //
-//		AuthorsDTO test5 = new AuthorsDTO(authorService.getPageAuthor(1,6).getContent());
-//		System.out.println("4=======");
-
-	}
+//        Pageable nextPage = PageRequest.of(0, 20);
+//
+//        try {
+//            Page<BookEntity> ddd = bookRepository.findByPubDateBetween(ft.parse("2017.01.01"), ft.parse("2018.01.01"), nextPage);
+//        } catch (ParseException e) {
+//            e.printStackTrace();
+//        }
+//        System.out.println("-----");
+    }
 
 }
