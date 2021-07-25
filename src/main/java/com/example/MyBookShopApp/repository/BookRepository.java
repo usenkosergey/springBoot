@@ -22,4 +22,6 @@ public interface BookRepository extends JpaRepository<BookEntity, Integer> {
 
     Page<BookEntity> findByPubDateAfterOrderByPubDateDesc(Date from, Pageable pageable);
 
+    Page<BookEntity> findAllByOrderByPopularityDesc(Pageable pageable);
+
 }

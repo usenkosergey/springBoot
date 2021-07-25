@@ -47,7 +47,7 @@ public class MainController {
 
     @ModelAttribute("popularBooks")
     public List<BookDTO> popularBooks() {
-        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
+        List<BookEntity> bookEntityList = bookService.getPopularityBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
         return mapper.bookEntityToBookDTO(bookEntityList);
     }
 
@@ -73,7 +73,7 @@ public class MainController {
         BooksDTO booksDTO = new BooksDTO();
         booksDTO.setCount(0);
 
-        List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(offset, limit).getContent();
+        List<BookEntity> bookEntityList = bookService.getPopularityBooks(offset, limit).getContent();
         booksDTO.setBooks(mapper.bookEntityToBookDTO(bookEntityList));
         return booksDTO;
     }

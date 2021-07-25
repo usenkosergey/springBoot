@@ -24,7 +24,7 @@ public class BookService {
         return bookRepository.findAll();
     }
 
-    public Page<BookEntity> getPageOfRecommendedBooks(Integer offset, Integer limit){
+    public Page<BookEntity> getPageOfRecommendedBooks(Integer offset, Integer limit) {
         Pageable nextPage = PageRequest.of(offset, limit);
         return bookRepository.findAll(nextPage);
     }
@@ -32,6 +32,11 @@ public class BookService {
     public Page<BookEntity> getPageOfRecentBooks(Integer offset, Integer limit) {
         Pageable nextPage = PageRequest.of(offset, limit);
         return bookRepository.findAllByOrderByPubDateDesc(nextPage);
+    }
+
+    public Page<BookEntity> getPopularityBooks(Integer offset, Integer limit) {
+        Pageable nextPage = PageRequest.of(offset, limit);
+        return bookRepository.findAllByOrderByPopularityDesc(nextPage);
     }
 
 

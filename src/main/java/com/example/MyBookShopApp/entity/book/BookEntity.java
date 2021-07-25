@@ -41,6 +41,8 @@ public class BookEntity {
     @Column(columnDefinition = "SMALLINT NOT NULL DEFAULT 0")
     private Short discount;
 
+    private Integer popularity;
+
     //************************
     @OneToMany(mappedBy = "book")
     private List<Book2UserEntity> user = new ArrayList<>();
@@ -67,6 +69,14 @@ public class BookEntity {
     private List<Book2AuthorEntity> book2author;
     //************************
 
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
+    }
 
     public Integer getId() {
         return id;

@@ -12,8 +12,17 @@ public class BookDTO {
     private String status; //KEPT (отложена), CART (в корзине) и PAID(куплена)
     private Integer price;
     private Integer discountPrice;
+    private Integer popularity;
 
     public BookDTO() {
+    }
+
+    public Integer getPopularity() {
+        return popularity;
+    }
+
+    public void setPopularity(Integer popularity) {
+        this.popularity = popularity;
     }
 
     public Byte getIsBestseller() {
