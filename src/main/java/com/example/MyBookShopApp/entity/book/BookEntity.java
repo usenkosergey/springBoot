@@ -6,6 +6,7 @@ import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
+import com.example.MyBookShopApp.entity.tag.TagEntity;
 
 import javax.persistence.*;
 import java.util.*;
@@ -41,8 +42,19 @@ public class BookEntity {
     @Column(columnDefinition = "SMALLINT NOT NULL DEFAULT 0")
     private Short discount;
 
+    @Column(columnDefinition = "INTEGER DEFAULT 0")
     private Integer popularity;
 
+
+    //************************
+    @ManyToMany(cascade = {
+            CascadeType.PERSIST,
+            CascadeType.MERGE
+    })
+    @JoinTable(name = "book2tags", indexes = {@Index(name = "book_id_in", columnList = "book_id"), @Index(name = "tag_id_in", columnList = "tag_id")},
+            joinColumns = @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_TAG_FK")),
+            inverseJoinColumns = @JoinColumn(name = "tag_id", foreignKey = @ForeignKey(name = "TAGS_ID_FK")))
+    private List<TagEntity> tags = new ArrayList<>();
     //************************
     @OneToMany(mappedBy = "book")
     private List<Book2UserEntity> user = new ArrayList<>();
@@ -72,6 +84,14 @@ public class BookEntity {
 
     public Integer getPopularity() {
         return popularity;
+    }
+
+    public List<TagEntity> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<TagEntity> tags) {
+        this.tags = tags;
     }
 
     public void setPopularity(Integer popularity) {
