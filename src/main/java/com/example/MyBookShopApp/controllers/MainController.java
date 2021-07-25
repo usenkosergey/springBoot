@@ -22,6 +22,7 @@ import java.util.List;
 public class MainController {
     /*     Magic number       */
     private final int LIMIT_BOOKS_INDEX_PAGE = 6;
+    private final int LIMIT_BOOKS_POPULAR_PAGE = 20;
 
     private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
     private final BookService bookService;
@@ -58,7 +59,7 @@ public class MainController {
 
     @GetMapping("/books/recent")
     @ResponseBody
-    public BooksDTO getBookRecent(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+    public BooksDTO getBookRecent(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
         BooksDTO booksDTO = new BooksDTO();
         booksDTO.setCount(0);
 
@@ -69,9 +70,11 @@ public class MainController {
 
     @GetMapping("/books/popular")
     @ResponseBody
-    public BooksDTO getBookPopular(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit){
+    public BooksDTO getBookPopular(@RequestParam("offset") Integer offset, @RequestParam("limit") Integer limit) {
         BooksDTO booksDTO = new BooksDTO();
         booksDTO.setCount(0);
+
+        offset = offset == 0 && limit != LIMIT_BOOKS_INDEX_PAGE ? 0 : offset / LIMIT_BOOKS_POPULAR_PAGE;
 
         List<BookEntity> bookEntityList = bookService.getPopularityBooks(offset, limit).getContent();
         booksDTO.setBooks(mapper.bookEntityToBookDTO(bookEntityList));
