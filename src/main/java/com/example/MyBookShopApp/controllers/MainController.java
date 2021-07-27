@@ -2,9 +2,12 @@ package com.example.MyBookShopApp.controllers;
 
 import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.dto.response.BooksDTO;
+import com.example.MyBookShopApp.dto.response.TagDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
+import com.example.MyBookShopApp.entity.tag.TagEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.service.BookService;
+import com.example.MyBookShopApp.service.TagService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -29,9 +32,12 @@ public class MainController {
 
     private final BookMapper mapper = Mappers.getMapper(BookMapper.class);
 
+    private final TagService tagService;
+
     @Autowired
-    public MainController(BookService bookService) {
+    public MainController(BookService bookService, TagService tagService) {
         this.bookService = bookService;
+        this.tagService = tagService;
     }
 
     @ModelAttribute("recommendedBooks")
@@ -50,6 +56,12 @@ public class MainController {
     public List<BookDTO> popularBooks() {
         List<BookEntity> bookEntityList = bookService.getPopularityBooks(0, LIMIT_BOOKS_INDEX_PAGE).getContent();
         return mapper.bookEntityToBookDTO(bookEntityList);
+    }
+
+    @ModelAttribute("tags")
+    public List<TagDTO> tags() {
+        List<TagDTO> tagEntityList = tagService.getTagsIndexPage();
+        return tagEntityList;
     }
 
     @GetMapping("/")
