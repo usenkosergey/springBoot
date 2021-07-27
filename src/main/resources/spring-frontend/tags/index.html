@@ -27,14 +27,13 @@
         <ul class="breadcrumbs">
           <li class="breadcrumbs-item"><a href="/">Главная</a>
           </li>
-          <li class="breadcrumbs-item breadcrumbs-item_current"><span>Психологическая проза</span>
+          <li class="breadcrumbs-item breadcrumbs-item_current"><span th:text="${one_tag.tag}"></span>
           </li>
         </ul>
         <div class="Section">
           <div class="Section-header">
-            <h1 class="Section-title">Психологическая проза
-            </h1>
-            <div class="Section-header-links"><a class="Section-header-link" href="/index.html#tags">Все тэги</a>
+            <h1 class="Section-title" th:text="${one_tag.tag}"></h1>
+            <div class="Section-header-links"><a class="Section-header-link" href="/#tags">Все тэги</a>
             </div>
           </div>
           <div class="Cards Cards_refresh">
@@ -42,7 +41,7 @@
               <div th:replace="~{fragments/oneBook::oneBook}"></div>
             </div>
             <div class="Cards-footer Cards-footer_center">
-              <a class="btn btn_primary" href="#" data-refreshshow="tag" data-refreshoffset="20" data-refreshlimit="20" data-refreshid="19">Показать еще</a>
+              <a class="btn btn_primary" href="#" data-refreshshow="tag" data-refreshoffset="20" data-refreshlimit="20" th:attr="data-refreshid=${one_tag.id}" >Показать еще</a>
             </div>
           </div>
         </div>

@@ -23,4 +23,31 @@ public class TagEntity {
             },
             mappedBy = "tags")
     private List<BookEntity> books = new ArrayList<>();
+
+    public TagEntity() {
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getTag() {
+        return tag;
+    }
+
+    public void setTag(String tag) {
+        this.tag = tag;
+    }
+
+    public List<BookEntity> getBooks() {
+        return books;
+    }
+
+    public void setBooks(List<BookEntity> books) {
+        this.books = books;
+    }
 }
