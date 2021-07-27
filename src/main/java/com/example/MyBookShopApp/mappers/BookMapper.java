@@ -3,6 +3,7 @@ package com.example.MyBookShopApp.mappers;
 import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
+import org.mapstruct.AfterMapping;
 import org.mapstruct.BeforeMapping;
 import org.mapstruct.Mapper;
 import org.mapstruct.MappingTarget;
@@ -14,7 +15,7 @@ import java.util.List;
 public abstract class BookMapper {
 
 
-    @BeforeMapping
+    @AfterMapping
     void getAuthor(BookEntity bookEntity, @MappingTarget BookDTO bookDTO) {
         if (bookEntity.getBook2author().size() == 1) {
             bookDTO.setAuthor(bookEntity.getBook2author().get(0).getAuthor().getName());
