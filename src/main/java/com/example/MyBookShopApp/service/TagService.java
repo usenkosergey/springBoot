@@ -1,7 +1,6 @@
 package com.example.MyBookShopApp.service;
 
 import com.example.MyBookShopApp.dto.response.TagDTO;
-import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.tag.TagEntity;
 import com.example.MyBookShopApp.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,8 +23,12 @@ public class TagService {
         this.tagRepository = tagRepository;
     }
 
-    public TagEntity getOneTag(Integer id) {
-        return tagRepository.findById(id).get();
+    public TagDTO getOneTag(Integer id) {
+        TagDTO tagDTO = new TagDTO();
+        TagEntity tagEntity = tagRepository.findById(id).get();
+        tagDTO.setId(tagEntity.getId());
+        tagDTO.setTag(tagEntity.getTag());
+        return tagDTO;
     }
 
     public List<TagDTO> getTagsIndexPage() {

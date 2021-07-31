@@ -8,8 +8,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class BookService {
 
@@ -20,8 +18,9 @@ public class BookService {
         this.bookRepository = bookRepository;
     }
 
-    public List<BookEntity> getBooksData() {
-        return bookRepository.findAll();
+    public Page<BookEntity> getBooksByTag(Integer offset, Integer limit, Integer tagId) {
+        Pageable nextPage = PageRequest.of(offset, limit);
+        return bookRepository.getBooksByTag(tagId, nextPage);
     }
 
     public Page<BookEntity> getPageOfRecommendedBooks(Integer offset, Integer limit) {

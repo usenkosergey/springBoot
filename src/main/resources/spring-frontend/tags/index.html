@@ -37,7 +37,7 @@
             </div>
           </div>
           <div class="Cards Cards_refresh">
-            <div class="Card" th:each="book : ${tagsBooks}">
+            <div class="Card" th:each="book : ${booksForTag}">
               <div th:replace="~{fragments/oneBook::oneBook}"></div>
             </div>
             <div class="Cards-footer Cards-footer_center">
