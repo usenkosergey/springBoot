@@ -8,6 +8,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class BookService {
 
@@ -16,6 +18,16 @@ public class BookService {
     @Autowired
     public BookService(BookRepository bookRepository) {
         this.bookRepository = bookRepository;
+    }
+
+    public Page<BookEntity> getBooksSearch(Integer offset, Integer limit, String searchWord) {
+        Pageable nextPage = PageRequest.of(offset, limit);
+        return bookRepository.findAllByTitleContainingOrDescriptionContaining(searchWord, searchWord, nextPage);
+    }
+
+    public int getCountSearchBooks(String searchValue) {
+        Optional<Integer> optional = bookRepository.countByTitleContainingOrDescriptionContaining(searchValue, searchValue);
+        return optional.orElse(0);
     }
 
     public Page<BookEntity> getBooksByTag(Integer offset, Integer limit, Integer tagId) {

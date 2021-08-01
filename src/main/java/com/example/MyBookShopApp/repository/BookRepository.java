@@ -28,10 +28,14 @@ public interface BookRepository extends PagingAndSortingRepository<BookEntity, I
     Page<BookEntity> findAllByOrderByPopularityDesc(Pageable pageable);
 
     @Query(nativeQuery = true,
-    value = "SELECT * FROM public.book " +
+    value = "SELECT * FROM book " +
             "JOIN book2tags ON book.id = book2tags.book_id " +
             "JOIN tags ON tags.id = book2tags.tag_id " +
             "WHERE tags.id = (:tagId)")
     Page<BookEntity> getBooksByTag(@Param("tagId") Integer tagId, Pageable pageable);
+
+    Page<BookEntity> findAllByTitleContainingOrDescriptionContaining(String searchWord, String searchWord1, Pageable pageable);
+
+    Optional<Integer> countByTitleContainingOrDescriptionContaining(String searchWord, String searchWord1);
 
 }
