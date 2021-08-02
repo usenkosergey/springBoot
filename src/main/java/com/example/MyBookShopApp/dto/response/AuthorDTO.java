@@ -1,18 +1,39 @@
 package com.example.MyBookShopApp.dto.response;
 
-import com.example.MyBookShopApp.entity.book.BookEntity;
-
-import java.util.ArrayList;
-import java.util.List;
-
 public class AuthorDTO {
     private Integer id;
     private String photo;
     private String slug;
     private String name;
     private String description;
-    //private List<BookEntity> books = new ArrayList<>();
+    private Integer countBooks;
+    private String visibleBiographyBlock;
+    private String hiddenBiographyBlock;
 
+
+    public String getVisibleBiographyBlock() {
+        return visibleBiographyBlock;
+    }
+
+    public void setVisibleBiographyBlock(String visibleBiographyBlock) {
+        this.visibleBiographyBlock = visibleBiographyBlock;
+    }
+
+    public String getHiddenBiographyBlock() {
+        return hiddenBiographyBlock;
+    }
+
+    public void setHiddenBiographyBlock(String hiddenBiographyBlock) {
+        this.hiddenBiographyBlock = hiddenBiographyBlock;
+    }
+
+    public Integer getCountBooks() {
+        return countBooks;
+    }
+
+    public void setCountBooks(Integer countBooks) {
+        this.countBooks = countBooks;
+    }
 
     public Integer getId() {
         return id;

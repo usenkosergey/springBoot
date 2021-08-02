@@ -38,4 +38,16 @@ public interface BookRepository extends PagingAndSortingRepository<BookEntity, I
 
     Optional<Integer> countByTitleContainingOrDescriptionContaining(String searchWord, String searchWord1);
 
+    @Query(nativeQuery = true,
+            value = "SELECT * FROM public.book " +
+                    "JOIN book2author ON book.id = book2author.book_id " +
+                    "where author_id = (:authorId)")
+    Page<BookEntity> getBooksByAuthor(@Param("authorId") Integer authorId, Pageable pageable);
+
+    @Query(nativeQuery = true,
+            value = "SELECT count(*) FROM public.book " +
+                    "JOIN book2author ON book.id = book2author.book_id " +
+                    "where author_id = (:authorId)")
+    Optional<Integer> countBooksByAuthor(@Param("authorId") Integer authorId);
+
 }
