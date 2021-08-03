@@ -14,6 +14,7 @@ public class GenreEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
+    @Column(name = "parent_id", unique = false)
     private int parentId;
 
     @Column(nullable = false)
@@ -29,6 +30,22 @@ public class GenreEntity {
             },
             mappedBy = "genres")
     private List<BookEntity> books = new ArrayList<>();
+
+    @OneToMany(fetch = FetchType.EAGER,
+            cascade = {
+                    CascadeType.PERSIST,
+                    CascadeType.MERGE
+            })
+    @JoinColumn(name = "id", referencedColumnName = "parent_id")
+    private List<GenreEntity> subGenres;
+
+    public List<GenreEntity> getSubGenres() {
+        return subGenres;
+    }
+
+    public void setSubGenres(List<GenreEntity> subGenres) {
+        this.subGenres = subGenres;
+    }
 
     public List<BookEntity> getBooks() {
         return books;

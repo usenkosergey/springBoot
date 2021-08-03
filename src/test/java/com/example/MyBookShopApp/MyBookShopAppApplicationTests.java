@@ -6,10 +6,12 @@ import com.example.MyBookShopApp.dto.response.BooksDTO;
 import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
+import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.repository.AuthorRepository;
 import com.example.MyBookShopApp.repository.Book2AuthorRepository;
 import com.example.MyBookShopApp.repository.BookRepository;
+import com.example.MyBookShopApp.repository.GenreRepository;
 import com.example.MyBookShopApp.service.AuthorService;
 import com.example.MyBookShopApp.service.BookService;
 import org.junit.jupiter.api.Test;
@@ -43,11 +45,23 @@ class MyBookShopAppApplicationTests {
     @Autowired
     Book2AuthorRepository book2AuthorRepository;
 
+    @Autowired
+    GenreRepository genreRepository;
+
 //	@Autowired
 //	BookMapper bookMapper;
 
     private BookMapper mapper = Mappers.getMapper(BookMapper.class);
 
+
+    @Test
+    void selectGenre(){
+      Iterable<GenreEntity> test =  genreRepository.findAll();
+      for (GenreEntity g : test) {
+          System.out.println(g.toString());
+      }
+        System.out.println("----");
+    }
     @Test
     void contextLoads() {
 
