@@ -32,4 +32,6 @@ public abstract class BookMapper {
     }
 
     public abstract List<BookDTO> bookEntityToBookDTO(List<BookEntity> bookEntity);
+
+    public abstract BookDTO oneBookEntityToBookDTO(BookEntity bookEntity);
 }

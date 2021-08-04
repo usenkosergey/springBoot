@@ -14,6 +14,7 @@ import com.example.MyBookShopApp.repository.BookRepository;
 import com.example.MyBookShopApp.repository.GenreRepository;
 import com.example.MyBookShopApp.service.AuthorService;
 import com.example.MyBookShopApp.service.BookService;
+import org.checkerframework.checker.nullness.Opt;
 import org.junit.jupiter.api.Test;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +28,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @SpringBootTest
 class MyBookShopAppApplicationTests {
@@ -56,10 +58,10 @@ class MyBookShopAppApplicationTests {
 
     @Test
     void selectGenre(){
-      Iterable<GenreEntity> test =  genreRepository.findAll();
-      for (GenreEntity g : test) {
-          System.out.println(g.toString());
-      }
+      List<GenreEntity> test =  genreRepository.findByParentIdNull();
+//      for (GenreEntity g : test) {
+//          System.out.println(g.toString());
+//      }
         System.out.println("----");
     }
     @Test

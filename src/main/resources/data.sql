@@ -1409,8 +1409,8 @@ Insert Into book2tags (book_id, tag_id) VALUES (12,3);
 Insert Into book2tags (book_id, tag_id) VALUES (13,5);
 Insert Into book2tags (book_id, tag_id) VALUES (14,7);
 
-insert into genre (parent_id, name, slug) values (0, 'Первый главный жанр', 'one_genre');
-insert into genre (parent_id, name, slug) values (0, 'Второй главный жанр', 'two_genre');
+insert into genre (parent_id, name, slug) values (null, 'Первый главный жанр', 'one_genre');
+insert into genre (parent_id, name, slug) values (null, 'Второй главный жанр', 'two_genre');
 insert into genre (parent_id, name, slug) values (1, 'Первое вложение 1-го жанра', 'one_one_genre');
 insert into genre (parent_id, name, slug) values (1, 'Второе вложение 1-го жанра', 'two_one_genre');
 insert into genre (parent_id, name, slug) values (3, 'Первое вложение Первого вложения 1-го жанра', 'one_one_one_genre');

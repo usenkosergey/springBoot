@@ -94,7 +94,7 @@ p.error-browser
                 </div>
                 <h2 class="Middle-title">Книги по тегам</h2>
                 <div class="Tags" id="tags">
-                    <div class="Tag" th:each="tag : ${tags}" th:th:classappend="${tag.classTag}">
+                    <div class="Tag" th:each="tag : ${tags}" th:classappend="${tag.classTag}">
                         <a href="#" th:href="@{'/tags/' + ${tag.id}}" th:text="${tag.tag}"></a>
                     </div>
                 </div>

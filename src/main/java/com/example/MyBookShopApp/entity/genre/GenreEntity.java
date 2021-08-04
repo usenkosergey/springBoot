@@ -14,8 +14,9 @@ public class GenreEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "parent_id", unique = false)
-    private int parentId;
+    @ManyToOne
+    @JoinColumn(name = "parent_id", nullable = true)
+    private GenreEntity parentId;
 
     @Column(nullable = false)
     private String slug;
@@ -35,8 +36,8 @@ public class GenreEntity {
             cascade = {
                     CascadeType.PERSIST,
                     CascadeType.MERGE
-            })
-    @JoinColumn(name = "id", referencedColumnName = "parent_id")
+            }, mappedBy = "parentId")
+    //@JoinColumn(name = "id", referencedColumnName = "parent_id")
     private List<GenreEntity> subGenres;
 
     public List<GenreEntity> getSubGenres() {
@@ -63,13 +64,21 @@ public class GenreEntity {
         this.id = id;
     }
 
-    public int getParentId() {
+    public GenreEntity getParentId() {
         return parentId;
     }
 
-    public void setParentId(int parentId) {
+    public void setParentId(GenreEntity parentId) {
         this.parentId = parentId;
     }
+
+    //    public int getParentId() {
+//        return parentId;
+//    }
+//
+//    public void setParentId(int parentId) {
+//        this.parentId = parentId;
+//    }
 
     public String getSlug() {
         return slug;
