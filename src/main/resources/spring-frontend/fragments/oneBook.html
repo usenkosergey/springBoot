@@ -4,7 +4,7 @@
 </head>
 <body>
 <div th:fragment="oneBook">
-    <a class="Card-picture" href="/books/slug.html">
+    <a class="Card-picture" th:href="@{'/books/' + ${book.slug}}">
         <img th:src="${book.image}" alt="card.jpg"/>
         <div class="Card-sale" th:if="${book.discount}"
              th:text="${book.discount + '% скидка'}"></div>
@@ -20,7 +20,7 @@
     </a>
     <div class="Card-content">
         <strong class="Card-title">
-            <a href="/books/slug.html" th:text="${book.title}"></a>
+            <a th:href="@{'/books/' + ${book.slug}}" th:text="${book.title}"></a>
         </strong>
         <div class="Card-description" th:text="${book.author}">
         </div>
