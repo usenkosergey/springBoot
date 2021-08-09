@@ -4,15 +4,17 @@ import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.dto.response.BooksDTO;
 import com.example.MyBookShopApp.dto.response.TagDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
-import com.example.MyBookShopApp.entity.tag.TagEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
+import com.example.MyBookShopApp.repository.BookRepository;
 import com.example.MyBookShopApp.service.BookService;
+import com.example.MyBookShopApp.service.ResourceStorage;
 import com.example.MyBookShopApp.service.TagService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.logging.Logger;
 
@@ -31,11 +33,15 @@ public class MainController {
     private final BookMapper mapper = Mappers.getMapper(BookMapper.class);
 
     private final TagService tagService;
+    private final ResourceStorage resourceStorage;
+    private final BookRepository bookRepository;
 
     @Autowired
-    public MainController(BookService bookService, TagService tagService) {
+    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository) {
         this.bookService = bookService;
         this.tagService = tagService;
+        this.resourceStorage = resourceStorage;
+        this.bookRepository = bookRepository;
     }
 
     @ModelAttribute("recommendedBooks")
@@ -107,5 +113,16 @@ public class MainController {
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
         return "/books/slug";
     }
+
+    @PostMapping("/books/{slug}/img/save")
+    public String saveNewBookImage(@RequestParam("file")MultipartFile file, @PathVariable("slug") String slug){
+        String savePath = resourceStorage.saveNewBookImage(file, slug);
+        BookEntity bookEntity = bookService.getBookBySlug(slug).get();
+        bookEntity.setImage(savePath);
+        bookRepository.save(bookEntity);
+
+        return ("redirect:/books/" + slug);
+    }
+
 
 }
