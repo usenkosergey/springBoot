@@ -25,8 +25,7 @@
         <div class="Card-description" th:text="${book.author}">
         </div>
         <div class="Card-cost">
-                                            <span class="Card-priceOld" th:if="${book.discount}"
-                                                  th:text="${'₽' + book.price}"></span>
+            <span class="Card-priceOld" th:if="${book.discount}" th:text="${'₽' + book.price}"></span>
             <span class="Card-price" th:text="${'₽' + book.discountPrice}"></span>
         </div>
     </div>

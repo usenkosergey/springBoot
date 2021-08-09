@@ -17,6 +17,8 @@ public interface BookRepository extends PagingAndSortingRepository<BookEntity, I
 
     Optional<BookEntity> findById(Integer id);
 
+    Optional<BookEntity> findBySlug(String slug);
+
     Page<BookEntity> findAllByOrderByPubDateDesc(Pageable pageable);
 
     Page<BookEntity> findByPubDateBetweenOrderByPubDateDesc(Date from, Date to, Pageable pageable);

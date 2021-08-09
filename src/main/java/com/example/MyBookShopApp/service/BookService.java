@@ -50,5 +50,9 @@ public class BookService {
         return bookRepository.findAllByOrderByPopularityDesc(nextPage);
     }
 
+    public Optional<BookEntity> getBookBySlug(String slug){
+        return bookRepository.findBySlug(slug);
+    }
+
 
 }

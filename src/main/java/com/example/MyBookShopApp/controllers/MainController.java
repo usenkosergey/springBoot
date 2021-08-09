@@ -11,6 +11,7 @@ import com.example.MyBookShopApp.service.TagService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.logging.Logger;
@@ -99,6 +100,12 @@ public class MainController {
         List<BookEntity> bookEntityList = bookService.getPageOfRecommendedBooks(offset, limit).getContent();
         booksDTO.setBooks(mapper.bookEntityToBookDTO(bookEntityList));
         return booksDTO;
+    }
+
+    @GetMapping("/books/{slug}")
+    public String bookPage(@PathVariable("slug") String slug, Model model){
+        model.addAttribute("book", bookService.getBookBySlug(slug).get());
+        return "/books/slug";
     }
 
 }
