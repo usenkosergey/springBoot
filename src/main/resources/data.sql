@@ -1436,3 +1436,7 @@ insert into book2genre (book_id, genre_id) values (14,2);
 insert into book2genre (book_id, genre_id) values (15,2);
 insert into book2genre (book_id, genre_id) values (16,2);
 insert into book2genre (book_id, genre_id) values (17,2);
+
+insert into book_file (hash, type_id, path, book_id) values ('sdsadas', 1, '/Caligula.pdf', 1);
+insert into book_file (hash, type_id, path, book_id) values ('sdfdfsd', 2, '/Caligula.epub', 1);
+insert into book_file (hash, type_id, path, book_id) values ('lkjoiuo', 3, '/Caligula.fb2', 1);

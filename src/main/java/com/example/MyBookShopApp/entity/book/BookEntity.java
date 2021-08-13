@@ -1,5 +1,6 @@
 package com.example.MyBookShopApp.entity.book;
 
+import com.example.MyBookShopApp.entity.book.file.BookFileEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
@@ -7,6 +8,7 @@ import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
 import com.example.MyBookShopApp.entity.tag.TagEntity;
+import com.example.MyBookShopApp.enums.BookFileType;
 
 import javax.persistence.*;
 import java.util.*;
@@ -80,6 +82,17 @@ public class BookEntity {
     @OneToMany (mappedBy="book", fetch=FetchType.EAGER)
     private List<Book2AuthorEntity> book2author;
     //************************
+    @OneToMany(mappedBy = "book")
+    private List<BookFileEntity> bookFileList = new ArrayList<>();
+
+    public List<BookFileEntity> getBookFileList() {
+        return bookFileList;
+    }
+
+    public void setBookFileList(List<BookFileEntity> bookFileList) {
+        this.bookFileList = bookFileList;
+    }
+
 
 
     public Integer getPopularity() {

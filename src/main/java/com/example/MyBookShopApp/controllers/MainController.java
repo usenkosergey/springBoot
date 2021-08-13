@@ -11,11 +11,17 @@ import com.example.MyBookShopApp.service.ResourceStorage;
 import com.example.MyBookShopApp.service.TagService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.ByteArrayResource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
+import java.nio.file.Path;
 import java.util.logging.Logger;
 
 import java.util.List;
@@ -122,6 +128,24 @@ public class MainController {
         bookRepository.save(bookEntity);
 
         return ("redirect:/books/" + slug);
+    }
+
+    @GetMapping("/books/download/{hash}")
+    public ResponseEntity<ByteArrayResource> bookFile(@PathVariable("hash") String hash) throws IOException {
+        Path path = resourceStorage.getBookFilePath(hash);
+        Logger.getLogger(this.getClass().getSimpleName()).info("book file path: " + path);
+
+        MediaType mediaType = resourceStorage.getBookFileMime(hash);
+        Logger.getLogger(this.getClass().getSimpleName()).info("book file mime type: " + mediaType);
+
+        byte[] data = resourceStorage.getBookFileByteArray(hash);
+        Logger.getLogger(this.getClass().getSimpleName()).info("book file data len: " + data.length);
+
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + path.getFileName().toString())
+                .contentType(mediaType)
+                .contentLength(data.length)
+                .body(new ByteArrayResource(data));
     }
 
 
