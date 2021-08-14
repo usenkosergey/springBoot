@@ -31,7 +31,9 @@ public class CartController {
 
     @GetMapping
     public String cart(@CookieValue(name = "CART", required = false) String cart, Model model) {
-        if (cart.length() > 0) {
+        if (cart == null || cart.equals("")) {
+            model.addAttribute("totalBooks", 0);
+        } else {
             int[] bookId = Arrays.stream(cart.split("/")).mapToInt(Integer::valueOf).distinct().toArray();
             List<BookEntity> bookEntityList = bookService.getBooksById(bookId);
             List<BookDTO> bookDTOList = mapper.bookEntityToBookDTO(bookEntityList);
