@@ -8,6 +8,7 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -52,6 +53,10 @@ public class BookService {
 
     public Optional<BookEntity> getBookBySlug(String slug){
         return bookRepository.findBySlug(slug);
+    }
+
+    public List<BookEntity> getBooksById(int[] booksId){
+        return bookRepository.findByIdIn(booksId);
     }
 
 

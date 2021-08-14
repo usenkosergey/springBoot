@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 
 @Repository
@@ -51,5 +52,7 @@ public interface BookRepository extends PagingAndSortingRepository<BookEntity, I
                     "JOIN book2author ON book.id = book2author.book_id " +
                     "where author_id = (:authorId)")
     Optional<Integer> countBooksByAuthor(@Param("authorId") Integer authorId);
+
+    List<BookEntity> findByIdIn(int[] booksId);
 
 }
