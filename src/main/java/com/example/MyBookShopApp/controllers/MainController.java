@@ -20,6 +20,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.logging.Logger;
@@ -115,13 +117,23 @@ public class MainController {
     }
 
     @GetMapping("/books/{slug}")
-    public String bookPage(@PathVariable("slug") String slug, Model model){
+    public String bookPage(@PathVariable("slug") String slug, Model model, HttpServletResponse response, @CookieValue(name = "RATE", required = false) String rateCookie) {
+        setCookie(response, rateCookie);
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
         return "/books/slug";
     }
 
+    private void setCookie(HttpServletResponse response, String rateCookie) {
+        if (rateCookie == null || rateCookie.equals("")) {
+            Cookie cookie = new Cookie("RATE", String.valueOf(Long.hashCode(System.currentTimeMillis())));
+            cookie.setPath("/");
+            cookie.setMaxAge(Integer.MAX_VALUE);
+            response.addCookie(cookie);
+        }
+    }
+
     @PostMapping("/books/{slug}/img/save")
-    public String saveNewBookImage(@RequestParam("file")MultipartFile file, @PathVariable("slug") String slug){
+    public String saveNewBookImage(@RequestParam("file") MultipartFile file, @PathVariable("slug") String slug) {
         String savePath = resourceStorage.saveNewBookImage(file, slug);
         BookEntity bookEntity = bookService.getBookBySlug(slug).get();
         bookEntity.setImage(savePath);
