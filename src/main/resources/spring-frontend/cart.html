@@ -26,8 +26,8 @@
       <main class="Middle-main">
         <h1 class="Middle-title">Корзина
         </h1>
-<!--        <h2 th:if="${totalBooks} == 0">Пока нет книг для покупки !!!</h2>-->
         <form class="form Cart" action="#" method="post">
+          <div class="Cart-messageInfo" th:if="${totalBooks} == 0">Корзина пуста</div>
           <div class="Cart-product" th:each="book : ${books}">
             <div class="Cart-block Cart-block_row">
               <div class="Cart-block Cart-block_pict"><a class="Cart-pict" th:href="@{'/books/' + ${book.slug}}"><img class="Cart-img" th:src="${book.image}" alt="card.jpg"/></a>

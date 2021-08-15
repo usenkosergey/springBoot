@@ -2,14 +2,14 @@ package com.example.MyBookShopApp.dto.request;
 
 public class ChangeBookStatus {
 
-    private String booksIds;
+    private String[] booksIds;
     private String status;
 
-    public String getBooksIds() {
+    public String[] getBooksIds() {
         return booksIds;
     }
 
-    public void setBooksIds(String booksIds) {
+    public void setBooksIds(String[] booksIds) {
         this.booksIds = booksIds;
     }
 
