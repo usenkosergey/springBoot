@@ -1,8 +1,13 @@
 package com.example.MyBookShopApp.dto.response;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonInclude;
+
 public class ResultDTO {
 
     private Boolean result;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private String error;
 
     public Boolean getResult() {

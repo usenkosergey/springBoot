@@ -8,11 +8,11 @@ public class BookDTO {
     private String title;
     private Short discount;
     private Byte isBestseller;
-    private Short rating;
+    private Short rating; //количество звезд у книги
     private String status; //KEPT (отложена), CART (в корзине) и PAID(куплена)
     private Integer price;
     private Integer discountPrice;
-    private Integer popularity;
+    private Integer popularity; //популярность книги
 
     public BookDTO() {
     }

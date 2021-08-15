@@ -7,6 +7,7 @@ import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.repository.BookRepository;
 import com.example.MyBookShopApp.service.BookService;
+import com.example.MyBookShopApp.service.RateService;
 import com.example.MyBookShopApp.service.ResourceStorage;
 import com.example.MyBookShopApp.service.TagService;
 import org.mapstruct.factory.Mappers;
@@ -34,6 +35,7 @@ public class MainController {
     /*     Magic number       */
     private final int LIMIT_BOOKS_INDEX_PAGE = 6;
     private final int LIMIT_BOOKS_POPULAR_PAGE = 20;
+    private final int MAX_RATE = 5;
 
     private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
     private final BookService bookService;
@@ -43,13 +45,15 @@ public class MainController {
     private final TagService tagService;
     private final ResourceStorage resourceStorage;
     private final BookRepository bookRepository;
+    private final RateService rateService;
 
     @Autowired
-    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository) {
+    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository, RateService rateService) {
         this.bookService = bookService;
         this.tagService = tagService;
         this.resourceStorage = resourceStorage;
         this.bookRepository = bookRepository;
+        this.rateService = rateService;
     }
 
     @ModelAttribute("recommendedBooks")
@@ -117,9 +121,14 @@ public class MainController {
     }
 
     @GetMapping("/books/{slug}")
-    public String bookPage(@PathVariable("slug") String slug, Model model, HttpServletResponse response, @CookieValue(name = "RATE", required = false) String rateCookie) {
+    public String bookPage(@PathVariable("slug") String slug,
+                           Model model,
+                           HttpServletResponse response,
+                           @CookieValue(name = "RATE", required = false) String rateCookie
+    ) {
         setCookie(response, rateCookie);
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
+        model.addAttribute("rate", rateService.getRateBookBySlug(slug));
         return "/books/slug";
     }
 

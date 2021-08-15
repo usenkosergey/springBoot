@@ -23,6 +23,14 @@ public class RateBookEntity {
     @Column(name = "rating_owner")
     private Integer ratingOwner;
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Integer getBookId() {
         return bookId;
     }
