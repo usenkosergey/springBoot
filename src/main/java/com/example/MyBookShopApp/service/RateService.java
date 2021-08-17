@@ -41,4 +41,10 @@ public class RateService {
         }
         return rate;
     }
+
+    public Boolean showRateLine(String slug, String rateCookie) {
+        int bookId = bookRepository.findBySlug(slug).get().getId();
+        int ratingOwner = Integer.parseInt(rateCookie);
+        return rateBookRepository.countByBookIdAndRatingOwner(bookId, ratingOwner) == 0;
+    }
 }

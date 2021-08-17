@@ -127,8 +127,10 @@ public class MainController {
                            @CookieValue(name = "RATE", required = false) String rateCookie
     ) {
         setCookie(response, rateCookie);
+        boolean showRateLine = rateService.showRateLine(slug, rateCookie);
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
         model.addAttribute("rate", rateService.getRateBookBySlug(slug));
+        model.addAttribute("showRateLine", showRateLine);
         return "/books/slug";
     }
 

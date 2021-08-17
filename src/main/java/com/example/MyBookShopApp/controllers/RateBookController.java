@@ -30,16 +30,15 @@ public class RateBookController {
 
     @PostMapping("/rateBook")
     public ResponseEntity<ResultDTO> saveRateBook(RateBook rateBook,
-                                                  @CookieValue(name = "RATE", required = false) String rateCookie) {
+                                                  @CookieValue(name = "RATE", required = false) String ratingOwner) {
 
         ResultDTO resultDTO = new ResultDTO();
-        int id = 0;
-        if (rateCookie != null && rateCookie.length() > 0) {
+        if (ratingOwner != null && ratingOwner.length() > 0) {
             RateBookEntity rateBookEntity = new RateBookEntity();
             rateBookEntity.setBookId(rateBook.getBookId());
             rateBookEntity.setRating(rateBook.getValue());
-            rateBookEntity.setRatingOwner(Integer.valueOf(rateCookie));
-            id = rateBookRepository.save(rateBookEntity).getId();
+            rateBookEntity.setRatingOwner(Integer.valueOf(ratingOwner));
+            int id = rateBookRepository.save(rateBookEntity).getId();
             resultDTO.setResult(id != 0);
         }
 

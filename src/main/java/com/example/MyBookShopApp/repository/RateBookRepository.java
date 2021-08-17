@@ -9,6 +9,6 @@ public interface RateBookRepository extends JpaRepository<RateBookEntity, Intege
 
     Integer countByBookIdAndRating(Integer bookId, Integer rating);
 
-    //SELECT rating, count(*) AS r_count FROM public.rate_book where book_id = 111 GROUP BY rating, book_id
+    Integer countByBookIdAndRatingOwner(Integer bookId, Integer ratingOwner);
 
 }
