@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 
 @Table(name = "book_2_not_registered_user")
 @Entity
-public class Book2NotRegisteredUserEntyti {
+public class Book2NotRegisteredUserEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

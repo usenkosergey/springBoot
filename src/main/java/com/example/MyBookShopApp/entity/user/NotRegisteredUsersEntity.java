@@ -10,8 +10,8 @@ public class NotRegisteredUsersEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Column(name = "user")
-    private Integer user;
+    @Column(name = "code_user")
+    private Integer code_user;
 
     public int getId() {
         return id;
@@ -22,10 +22,10 @@ public class NotRegisteredUsersEntity {
     }
 
     public Integer getUser() {
-        return user;
+        return code_user;
     }
 
-    public void setUser(Integer user) {
-        this.user = user;
+    public void setUser(Integer code_user) {
+        this.code_user = code_user;
     }
 }
