@@ -1388,6 +1388,11 @@ Insert Into tags (tag) VALUES ('Tag_8');
 Insert Into tags (tag) VALUES ('Tag_9');
 Insert Into tags (tag) VALUES ('Tag_10');
 
+Insert INTO book2user_type (id, code, name) VALUES (1, 'KEPT', 'Отложена');
+Insert INTO book2user_type (id, code, name) VALUES (2, 'CART', 'В корзине');
+Insert INTO book2user_type (id, code, name) VALUES (3, 'PAID', 'Куплена');
+Insert INTO book2user_type (id, code, name) VALUES (4, 'ARCHIVED', 'В архиве');
+
 Insert Into book2tags (book_id, tag_id) VALUES (1,1);
 Insert Into book2tags (book_id, tag_id) VALUES (1,2);
 Insert Into book2tags (book_id, tag_id) VALUES (2,1);
