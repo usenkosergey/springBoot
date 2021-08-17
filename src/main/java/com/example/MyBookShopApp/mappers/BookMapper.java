@@ -1,8 +1,6 @@
 package com.example.MyBookShopApp.mappers;
 
-import com.example.MyBookShopApp.dto.response.AuthorDTO;
 import com.example.MyBookShopApp.dto.response.BookDTO;
-import com.example.MyBookShopApp.entity.author.AuthorEntity;
 import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
 import org.mapstruct.AfterMapping;

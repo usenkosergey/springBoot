@@ -4,6 +4,7 @@ import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.service.BookService;
+import com.example.MyBookShopApp.service.RateService;
 import org.mapstruct.factory.Mappers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,12 +22,14 @@ import java.util.logging.Logger;
 public class CartController {
 
     private final BookService bookService;
+    private final RateService rateService;
     private final BookMapper mapper = Mappers.getMapper(BookMapper.class);
     private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
 
     @Autowired
-    public CartController(BookService bookService) {
+    public CartController(BookService bookService, RateService rateService) {
         this.bookService = bookService;
+        this.rateService = rateService;
     }
 
     @GetMapping
@@ -40,6 +43,7 @@ public class CartController {
             int totalPrice = 0;
             int totalPriceOld = 0;
             for (BookDTO b : bookDTOList) {
+                b.setRating(rateService.getRateBookBySlug(b.getSlug()).get(5));
                 totalPrice += b.getPrice();
                 totalPriceOld += b.getDiscountPrice();
             }
