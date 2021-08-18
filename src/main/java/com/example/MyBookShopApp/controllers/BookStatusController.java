@@ -20,7 +20,7 @@ import java.util.stream.Collectors;
 public class BookStatusController {
 
     private final Logger logger = Logger.getLogger(this.getClass().getSimpleName());
-    private String keptTemp = null;
+    //private String keptTemp = null;
 
     @PostMapping("/changeBookStatus")
     public ResponseEntity<ResultDTO> changeBookStatus(ChangeBookStatus changeBookStatus,
@@ -30,20 +30,20 @@ public class BookStatusController {
                                                       HttpServletResponse response, Model model) {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setResult(true);
-        keptTemp = kept;
+        //keptTemp = kept;
 
         switch (changeBookStatus.getStatus()) {
             case "CART":
-                addCartBook(changeBookStatus, cart, keptTemp, response);
+                addCartBook(changeBookStatus, cart, kept, response);
                 break;
             case "KEPT":
-                addKeptBook(changeBookStatus, kept, response);
+                addKeptBook(changeBookStatus, cart, kept, response);
                 break;
             case "UNLINK_CART":
                 removeCartBook(changeBookStatus, cart, response);
                 break;
             case "UNLINK_KEPT":
-                removeKeptBook(changeBookStatus.getBooksIds()[0], keptTemp, response);
+                removeKeptBook(changeBookStatus.getBooksIds()[0], kept, response);
                 break;
 
             default:
@@ -58,9 +58,14 @@ public class BookStatusController {
 
         for (String id : changeBookStatus.getBooksIds()) {
             stringJoiner.add(id);
-            if (kept != null) {
-                removeKeptBook(id, keptTemp, response);
-            }
+        }
+
+        removeKeptBook(changeBookStatus.getBooksIds()[0], kept, response);
+
+        if (changeBookStatus.getBooksIds().length > 1) {
+            Cookie newKept = new Cookie("KEPT", "");
+            newKept.setPath("/");
+            response.addCookie(newKept);
         }
 
         if (cart == null || cart.equals("")) {
@@ -74,7 +79,7 @@ public class BookStatusController {
         response.addCookie(cookie);
     }
 
-    public void addKeptBook(ChangeBookStatus changeBookStatus, String kept, HttpServletResponse response) {
+    public void addKeptBook(ChangeBookStatus changeBookStatus, String cart, String kept, HttpServletResponse response) {
         Cookie cookie = null;
         if (kept == null || kept.equals("")) {
             cookie = new Cookie("KEPT", changeBookStatus.getBooksIds()[0]);
@@ -84,6 +89,9 @@ public class BookStatusController {
             stringJoiner.add(kept).add(changeBookStatus.getBooksIds()[0]);
             cookie = new Cookie("KEPT", stringJoiner.toString());
         }
+
+        removeCartBook(changeBookStatus, cart, response);
+
         assert cookie != null;
         cookie.setPath("/");
         response.addCookie(cookie);
@@ -100,7 +108,6 @@ public class BookStatusController {
     public void removeKeptBook(String bookId, String kept, HttpServletResponse response) {
         String newCart = Arrays.stream(kept.split("/")).distinct().filter(i -> !i.equals(bookId)).collect(Collectors.joining("/"));
         Cookie cookie = new Cookie("KEPT", newCart);
-        keptTemp = newCart;
         cookie.setPath("/");
         response.addCookie(cookie);
     }
