@@ -126,21 +126,24 @@ public class MainController {
                            HttpServletResponse response,
                            @CookieValue(name = "RATE", required = false) String rateCookie
     ) {
-        setCookie(response, rateCookie);
-        boolean showRateLine = rateService.showRateLine(slug, rateCookie);
+        String cookie = setCookie(response, rateCookie);
+        boolean showRateLine = rateService.showRateLine(slug, cookie);
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
         model.addAttribute("rate", rateService.getRateBookBySlug(slug));
         model.addAttribute("showRateLine", showRateLine);
         return "/books/slug";
     }
 
-    private void setCookie(HttpServletResponse response, String rateCookie) {
-        if (rateCookie == null || rateCookie.equals("")) {
+    private String setCookie(HttpServletResponse response, String rateCookie) {
+        String chekOrSetCookie = rateCookie;
+        if (chekOrSetCookie == null || chekOrSetCookie.equals("")) {
             Cookie cookie = new Cookie("RATE", String.valueOf(Long.hashCode(System.currentTimeMillis())));
             cookie.setPath("/");
             cookie.setMaxAge(Integer.MAX_VALUE);
             response.addCookie(cookie);
+            chekOrSetCookie = cookie.getValue();
         }
+        return chekOrSetCookie;
     }
 
     @PostMapping("/books/{slug}/img/save")

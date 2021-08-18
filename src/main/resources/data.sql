@@ -1437,6 +1437,12 @@ insert into book2genre (book_id, genre_id) values (15,2);
 insert into book2genre (book_id, genre_id) values (16,2);
 insert into book2genre (book_id, genre_id) values (17,2);
 
+Insert INTO book2user_type (id, code, name) VALUES (1, 'KEPT', 'Отложена');
+Insert INTO book2user_type (id, code, name) VALUES (2, 'CART', 'В корзине');
+Insert INTO book2user_type (id, code, name) VALUES (3, 'PAID', 'Куплена');
+Insert INTO book2user_type (id, code, name) VALUES (4, 'ARCHIVED', 'В архиве');
+
+
 insert into book_file (hash, type_id, path, book_id) values ('sdsadas', 1, '/Caligula.pdf', 1);
 insert into book_file (hash, type_id, path, book_id) values ('sdfdfsd', 2, '/Caligula.epub', 1);
 insert into book_file (hash, type_id, path, book_id) values ('lkjoiuo', 3, '/Caligula.fb2', 1);
