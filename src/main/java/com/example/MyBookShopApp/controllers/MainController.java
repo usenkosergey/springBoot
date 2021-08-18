@@ -4,8 +4,10 @@ import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.dto.response.BooksDTO;
 import com.example.MyBookShopApp.dto.response.TagDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
+import com.example.MyBookShopApp.entity.user.NotRegisteredUsersEntity;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.repository.BookRepository;
+import com.example.MyBookShopApp.repository.NotRegisteredUsersRepository;
 import com.example.MyBookShopApp.service.BookService;
 import com.example.MyBookShopApp.service.RateService;
 import com.example.MyBookShopApp.service.ResourceStorage;
@@ -46,14 +48,16 @@ public class MainController {
     private final ResourceStorage resourceStorage;
     private final BookRepository bookRepository;
     private final RateService rateService;
+    private final NotRegisteredUsersRepository notRegisteredUsersRepository;
 
     @Autowired
-    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository, RateService rateService) {
+    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository, RateService rateService, NotRegisteredUsersRepository notRegisteredUsersRepository) {
         this.bookService = bookService;
         this.tagService = tagService;
         this.resourceStorage = resourceStorage;
         this.bookRepository = bookRepository;
         this.rateService = rateService;
+        this.notRegisteredUsersRepository = notRegisteredUsersRepository;
     }
 
     @ModelAttribute("recommendedBooks")
@@ -126,7 +130,12 @@ public class MainController {
                            HttpServletResponse response,
                            @CookieValue(name = "RATE", required = false) String rateCookie
     ) {
-        setCookie(response, rateCookie);
+        if (rateCookie == null || rateCookie.equals("")) {
+            Integer codeUser = Long.hashCode(System.currentTimeMillis());
+            rateCookie = String.valueOf(codeUser);
+            setCookie(response, rateCookie, codeUser);
+            saveUserInDB(codeUser);
+        }
         boolean showRateLine = rateService.showRateLine(slug, rateCookie);
         model.addAttribute("book", bookService.getBookBySlug(slug).get());
         model.addAttribute("rate", rateService.getRateBookBySlug(slug));
@@ -134,13 +143,17 @@ public class MainController {
         return "/books/slug";
     }
 
-    private void setCookie(HttpServletResponse response, String rateCookie) {
-        if (rateCookie == null || rateCookie.equals("")) {
-            Cookie cookie = new Cookie("RATE", String.valueOf(Long.hashCode(System.currentTimeMillis())));
-            cookie.setPath("/");
-            cookie.setMaxAge(Integer.MAX_VALUE);
-            response.addCookie(cookie);
-        }
+    private void setCookie(HttpServletResponse response, String rateCookie, Integer codeUser) {
+        Cookie cookie = new Cookie("RATE", String.valueOf(codeUser));
+        cookie.setPath("/");
+        cookie.setMaxAge(Integer.MAX_VALUE);
+        response.addCookie(cookie);
+    }
+
+    private void saveUserInDB(Integer codeUser) {
+        NotRegisteredUsersEntity notRegisteredUsersEntity = new NotRegisteredUsersEntity();
+        notRegisteredUsersEntity.setUser(codeUser);
+        notRegisteredUsersRepository.save(notRegisteredUsersEntity);
     }
 
     @PostMapping("/books/{slug}/img/save")

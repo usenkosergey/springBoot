@@ -24,23 +24,21 @@ public class BookStatusController {
 
     @PostMapping("/changeBookStatus")
     public ResponseEntity<ResultDTO> changeBookStatus(ChangeBookStatus changeBookStatus,
-                                                      @CookieValue(name = "CART", required = false) String cart,
-                                                      @CookieValue(name = "KEPT", required = false) String kept,
-                                                      @CookieValue(name = "ARCHIVED", required = false) String archived,
+                                                      @CookieValue(name = "RATE", required = false) String notRegisteredUsers,
                                                       HttpServletResponse response, Model model) {
         ResultDTO resultDTO = new ResultDTO();
         resultDTO.setResult(true);
-        keptTemp = kept;
+        //keptTemp = kept;
 
         switch (changeBookStatus.getStatus()) {
             case "CART":
-                addCartBook(changeBookStatus, cart, keptTemp, response);
+                //addCartBook(changeBookStatus, cart, keptTemp, response);
                 break;
             case "KEPT":
-                addKeptBook(changeBookStatus, kept, response);
+                //addKeptBook(changeBookStatus, kept, response);
                 break;
             case "UNLINK_CART":
-                removeCartBook(changeBookStatus, cart, response);
+                //removeCartBook(changeBookStatus, cart, response);
                 break;
             case "UNLINK_KEPT":
                 removeKeptBook(changeBookStatus.getBooksIds()[0], keptTemp, response);
