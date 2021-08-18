@@ -1,14 +1,14 @@
 package com.example.MyBookShopApp.entity.book.links;
 
 import com.example.MyBookShopApp.entity.book.BookEntity;
-import com.example.MyBookShopApp.entity.user.UserEntity;
+import com.example.MyBookShopApp.entity.user.UsersEntityNR;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Table(name = "book_2_not_registered_user")
 @Entity
-public class Book2NotRegisteredUserEntity {
+public class Book2UserNREntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -21,12 +21,20 @@ public class Book2NotRegisteredUserEntity {
     private int typeId;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_ID_FK"))
-    private BookEntity book;
+    @JoinColumn(name = "book_id", foreignKey = @ForeignKey(name = "BOOK_NOT_ID_FK"))
+    private BookEntity bookNot;
 
     @ManyToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_ID_FK"))
-    private UserEntity user;
+    @JoinColumn(name = "user_id", foreignKey = @ForeignKey(name = "USER_NOT_ID_FK"))
+    private UsersEntityNR userNot;
+
+    public UsersEntityNR getUserNot() {
+        return userNot;
+    }
+
+    public void setUserNot(UsersEntityNR userNot) {
+        this.userNot = userNot;
+    }
 
     public int getId() {
         return id;
@@ -53,18 +61,11 @@ public class Book2NotRegisteredUserEntity {
     }
 
     public BookEntity getBook() {
-        return book;
+        return bookNot;
     }
 
-    public void setBook(BookEntity book) {
-        this.book = book;
+    public void setBook(BookEntity bookNot) {
+        this.bookNot = bookNot;
     }
 
-    public UserEntity getUser() {
-        return user;
-    }
-
-    public void setUser(UserEntity user) {
-        this.user = user;
-    }
 }

@@ -3,12 +3,12 @@ package com.example.MyBookShopApp.entity.book;
 import com.example.MyBookShopApp.entity.book.file.BookFileEntity;
 import com.example.MyBookShopApp.entity.book.file.FileDownloadEntity;
 import com.example.MyBookShopApp.entity.book.links.Book2AuthorEntity;
+import com.example.MyBookShopApp.entity.book.links.Book2UserNREntity;
 import com.example.MyBookShopApp.entity.book.links.Book2UserEntity;
 import com.example.MyBookShopApp.entity.book.review.BookReviewEntity;
 import com.example.MyBookShopApp.entity.genre.GenreEntity;
 import com.example.MyBookShopApp.entity.payments.BalanceTransactionEntity;
 import com.example.MyBookShopApp.entity.tag.TagEntity;
-import com.example.MyBookShopApp.enums.BookFileType;
 
 import javax.persistence.*;
 import java.util.*;
@@ -84,6 +84,19 @@ public class BookEntity {
     //************************
     @OneToMany(mappedBy = "book")
     private List<BookFileEntity> bookFileList = new ArrayList<>();
+    //************************
+    @OneToMany(mappedBy = "bookNot")
+    private List<Book2UserNREntity> userNot = new ArrayList<>();
+    //************************
+
+
+    public List<Book2UserNREntity> getUserNot() {
+        return userNot;
+    }
+
+    public void setUserNot(List<Book2UserNREntity> userNot) {
+        this.userNot = userNot;
+    }
 
     public List<BookFileEntity> getBookFileList() {
         return bookFileList;

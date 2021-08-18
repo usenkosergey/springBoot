@@ -4,10 +4,10 @@ import com.example.MyBookShopApp.dto.response.BookDTO;
 import com.example.MyBookShopApp.dto.response.BooksDTO;
 import com.example.MyBookShopApp.dto.response.TagDTO;
 import com.example.MyBookShopApp.entity.book.BookEntity;
-import com.example.MyBookShopApp.entity.user.NotRegisteredUsersEntity;
+import com.example.MyBookShopApp.entity.user.UsersEntityNR;
 import com.example.MyBookShopApp.mappers.BookMapper;
 import com.example.MyBookShopApp.repository.BookRepository;
-import com.example.MyBookShopApp.repository.NotRegisteredUsersRepository;
+import com.example.MyBookShopApp.repository.UsersNRRepository;
 import com.example.MyBookShopApp.service.BookService;
 import com.example.MyBookShopApp.service.RateService;
 import com.example.MyBookShopApp.service.ResourceStorage;
@@ -48,16 +48,16 @@ public class MainController {
     private final ResourceStorage resourceStorage;
     private final BookRepository bookRepository;
     private final RateService rateService;
-    private final NotRegisteredUsersRepository notRegisteredUsersRepository;
+    private final UsersNRRepository usersNRRepository;
 
     @Autowired
-    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository, RateService rateService, NotRegisteredUsersRepository notRegisteredUsersRepository) {
+    public MainController(BookService bookService, TagService tagService, ResourceStorage resourceStorage, BookRepository bookRepository, RateService rateService, UsersNRRepository usersNRRepository) {
         this.bookService = bookService;
         this.tagService = tagService;
         this.resourceStorage = resourceStorage;
         this.bookRepository = bookRepository;
         this.rateService = rateService;
-        this.notRegisteredUsersRepository = notRegisteredUsersRepository;
+        this.usersNRRepository = usersNRRepository;
     }
 
     @ModelAttribute("recommendedBooks")
@@ -151,9 +151,9 @@ public class MainController {
     }
 
     private void saveUserInDB(Integer codeUser) {
-        NotRegisteredUsersEntity notRegisteredUsersEntity = new NotRegisteredUsersEntity();
+        UsersEntityNR notRegisteredUsersEntity = new UsersEntityNR();
         notRegisteredUsersEntity.setUser(codeUser);
-        notRegisteredUsersRepository.save(notRegisteredUsersEntity);
+        usersNRRepository.save(notRegisteredUsersEntity);
     }
 
     @PostMapping("/books/{slug}/img/save")
