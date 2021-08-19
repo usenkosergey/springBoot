@@ -98,18 +98,22 @@ public class BookStatusController {
     }
 
     public void removeCartBook(ChangeBookStatus changeBookStatus, String cart, HttpServletResponse response) {
-        String bookId = changeBookStatus.getBooksIds()[0];
-        String newCart = Arrays.stream(cart.split("/")).distinct().filter(i -> !i.equals(bookId)).collect(Collectors.joining("/"));
-        Cookie cookie = new Cookie("CART", newCart);
-        cookie.setPath("/");
-        response.addCookie(cookie);
+        if (cart != null) {
+            String bookId = changeBookStatus.getBooksIds()[0];
+            String newCart = Arrays.stream(cart.split("/")).distinct().filter(i -> !i.equals(bookId)).collect(Collectors.joining("/"));
+            Cookie cookie = new Cookie("CART", newCart);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
     }
 
     public void removeKeptBook(String bookId, String kept, HttpServletResponse response) {
-        String newCart = Arrays.stream(kept.split("/")).distinct().filter(i -> !i.equals(bookId)).collect(Collectors.joining("/"));
-        Cookie cookie = new Cookie("KEPT", newCart);
-        cookie.setPath("/");
-        response.addCookie(cookie);
+        if (kept != null) {
+            String newCart = Arrays.stream(kept.split("/")).distinct().filter(i -> !i.equals(bookId)).collect(Collectors.joining("/"));
+            Cookie cookie = new Cookie("KEPT", newCart);
+            cookie.setPath("/");
+            response.addCookie(cookie);
+        }
     }
 
 }
